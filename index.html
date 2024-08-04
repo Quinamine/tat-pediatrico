@@ -1,0 +1,519 @@
+<!doctype html>
+<html dir=ltr lang=pt-MZ id="root">
+    <head>
+        <meta charset=UTF-8>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <title>TAT PEDIÁTRICO</title>
+        <meta content="index, follow" name="robots">
+        <meta content='Serviço online gratuito com um Doseador de medicamentos anti-tuberculose (MATs) que, de acordo com o peso inserido pelo usuário, determina automaticamente doses terapêuticas dos MATs para crianças e adolescentes em tratamento anti-tuberculose (TAT), e um Doseador de piridoxina para profilaxia de Neuropatia Periférica. O serviço é baseado no guião "Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019" actualmente vigente no SNS em Moçambique.' name="description">
+        <meta content="Tratamento Anti-Tuberculose, TAT Pediátrico, Doseador de Anti-TBs, Doseador de MATs, Doseador de Piridoxina, Profilaxia de Neuropatia Periférica" name="keywords">
+        <meta content="Adérito Félix Quinamine" name="author">
+        <meta content="https://quinamine.github.io/tat-pediatrico/index.html" property="og:url">
+        <meta content="TAT PEDIÁTRICO" property="og:title">
+        <meta content='serviço online gratuito com um Doseador de medicamentos anti-tuberculose (MATs) que, de acordo com o peso inserido pelo usuário, determina automaticamente doses terapêuticas dos MATs para crianças e adolescentes em tratamento anti-tuberculose (TAT), e um Doseador de piridoxina para profilaxia de Neuropatia Periférica. O serviço é baseado no guião "Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019" actualmente vigente no SNS em Moçambique.' property="og:description">
+        <meta content="https://quinamine.github.io/tat-pediatrico/images/tat-pediatrico.jpg" property="og:image">
+        <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+        <link href="design/reset.css" rel="stylesheet">
+        <link href="design/layout.css" rel="stylesheet">
+        <script src="physiology/menu.js"></script>
+        <script src="physiology/doser.js"></script>
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-YBM46MLS6W" async></script>
+        <script>
+            function gtag() {
+                dataLayer.push(arguments)
+            }
+            window.dataLayer = window.dataLayer || [],
+            gtag("js", new Date),
+            gtag("config", "G-YBM46MLS6W")
+        </script>
+        <noscript>O seu navegador está com o JavaScript desabilitado e isso bloqueia as funcionalidades do Doseador. Habilite-o nas configurações do navegador e recarregue a página.</noscript>
+    </head>
+    <body id="body">
+        <header>
+            <div class="header__row">
+                <div class="layout-row">
+                    <a href="index.html" id="logo">TAT PEDIÁTRICO</a>
+                    <div class="meatballs-menu">
+                        <div class="meatballs-menu__dot"></div>
+                        <div class="meatballs-menu__dot"></div>
+                        <div class="meatballs-menu__dot"></div>
+                    </div>
+                    <div class="meatballs-menu-expanded">
+                        <ul>
+                            <li>
+                                <button class="meatballs-menu-expanded__option meatballs-menu-expanded__option--border-radius-t" data-article="article__section--regimes-para-inicios-tarv">Regimes recomendados para TARV</button>
+                            </li>
+                            <li>
+                                <button class="meatballs-menu-expanded__option" data-article="article__section--desnutricao">Manejo da desnutrição aguda</button>
+                            </li>
+                            <li>
+                                <button class="meatballs-menu-expanded__option meatballs-menu-expanded__option--share">Partilhar TAT Pediátrico</button>
+                            </li>
+                            <li>
+                                <a href="https://quinamine.github.io/tarv-pediatrico/index.html" class="meatballs-menu-expanded__option meatballs-menu-expanded__option--share">Acessar Tarv Pediátrico</a>
+                            </li>
+                            <li>
+                                <a href="https://quinamine.github.io/aderito-felix-quinamine/index.html" class="meatballs-menu-expanded__option meatballs-menu-expanded__option--border-radius-b">Sobre o Desenvolvedor</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div role="navigation" class="layout-row layout-row--no-space-between-n-padding header__main-menu"> 
+                <button title="Doseador de Anti-TBs" class="header__main-menu__btn header__main-menu__btn--current" data-article="article__section--darv" data-optgroup="doser__select__optgroup--arvs">Doseador de Anti-TBs</button>
+                <button title="Doseador de Piridoxina" class="header__main-menu__btn header__main-menu__btn--from-middle" data-article="article__section--tpc" data-optgroup="doser__select__optgroup--piridoxina">Doseador de Piridoxina</button>
+            </div>
+        </header>
+        <main id="main">
+            <div class=doser>
+                <h1 class="doser__title">Doseador de Anti&minus;TBs</h1>
+                <div class="doser__section doser__section--weight">
+                    <label class="doser__label" for="input-weight">Peso:</label>
+                    <input type="number" max="45" min="3" placeholder="Digite aqui o peso da criança" id="input-weight" class="doser__input doser__input--weight">
+                    <label class="doser__label doser__label--kg" for="input-weight">kg</label>
+                </div>
+                <p class="doser__min-weight-alert"></p>
+                <div class="doser__section doser__section--medicines">
+                    <label class="doser__label doser__label--medicine select-opener" for="select">Fármaco: </label>
+                    <ul class="doser__select" id="select">
+                        <li class="doser__select__option doser__select__option--placeholder --selected">
+                            <span class="hide-on-desktop">Toque</span>
+                            <span class="hide-on-mobile">Clique</span> aqui para selecionar
+                        </li>
+                        <div class="doser__select__searching-box">
+                            <button class="doser__select__btn--close">
+                                <svg style="width: 16px; height:16px">
+                                    <line stroke=var(--gray) stroke-width=2px x1=0% x2=50% y1=50% y2=0></line>
+                                    <line stroke=var(--gray) stroke-width=2px x1=0% x2=50% y1=50% y2=100%></line>
+                                    <line stroke=var(--gray) stroke-width=2px x1=-1 x2=100% y1=50% y2=50%></line>
+                                </svg>
+                            </button>
+                            <input type="search" placeholder="Filtrar ARV por nome ou sigla" id="input-src" class="doser__select__input--search">
+                        </div>
+                        <div class="doser__select__optgroup doser__select__optgroup--pirdoxina">
+                            <h3 class="doser__optgroup__title">Profilaxia de Neuropatia Periférica</h3>
+                            <li class="doser__select__option" data-nameofthemedicine="piridoxina-25mg">
+                                Profilaxia 25 mg Comp.
+                            </li>
+                            <li class="doser__select__option" data-nameofthemedicine="piridoxina-50mg">
+                                Profilaxia 50 mg Comp.
+                            </li>
+                        </div>
+                    </ul>
+                    <button class="doser__btn--expand-select select-opener">
+                        <svg style=width:10px;height:6px>
+                            <line stroke=#555555 stroke-width=1px x1=0 x2=50% y1=0 y2=100%></line>
+                            <line stroke=#555555 stroke-width=1px x1=50% x2=100% y1=100% y2=0></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="doser__section doser__section--output">
+                    <h2 class="doser__section__title">Dose, Posologia e Quantidade</h2>
+                    <div class=doser__section__dose></div>
+                </div>
+                <div class="doser__section doser__section--output">
+                    <h2 class="doser__section__title">Notas e Precauções</h2>
+                    <p class="doser__section__note doser__section__note--no-padding"></p>
+                </div>
+                <p class="bibliography-source bibliography-source--hide-on-desktop"><strong>Fonte: </strong><a href="project-source/poliptico-pediatrico-16-2-2022-finalissima.pdf" download class="element--underline">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a>.</p>
+            </div>
+            <article class="article">
+                <section class="article__section article__section--main article__section--darv --open">
+                    <h2 class="article__title article__title--level-1">Visão geral sobre o TAT Pediátrico</h2>
+                    <p class="article__p">
+                        O <b>TAT Pediátrico</b> é um serviço online gratuito com um Doseador de medicamentos anti-tuberculose (MATs) que, de acordo com o peso inserido pelo usuário, determina automaticamente doses terapêuticas dos MATs para crianças e adolescentes em tratamento anti-tuberculose (TAT), e um Doseador de piridoxina para profilaxia de Neuropatia Periférica. O serviço é baseado no guião <a href="project-source/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" download="Guião_Normas_clínicas_PNCT_Dez19" class="element--underline"><strong>"Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019"</strong></a> que, até a data de publicação deste serviço (<time datetime="2024-08-05">05/08/2024</time>), ainda estava em vigor no Serviço Nacional de Saúde (SNS) em Moçambique.
+                    </p>
+                    <p class="article__p">O TAT PEDIÁTRICO está basicamente estruturado da seguinte forma:</p>
+                    <ul class="article__list article__list--ul">
+                        <li> Um campo com o rótulo <b>Peso</b>, para inserir o peso em quilograma(s) da criança para a qual você pretende calcular a dose;</li>
+                        <li><b>Fármaco</b>, campo de seleção com os fármacos anti-TB da 1<sup>a</sup> e 2<sup>a</sup> linhas. <span class="hide-on-mobile">Clique</span><span class="hide-on-desktop">Toque</span> no campo para abrir a lista e em seguida, selecione o fármaco do qual pretende calcular a dose.</li>
+                        <li><b>Dose, Posologia e Quantidade:</b> secção de saída em que são automaticamente mostradas, numa mini-tabela, a dose, posologia e quantidade de comprimidos a dispensar (para 14 e 28 dias) do fármaco selecionado de acordo com o peso inserido;</li>
+                        <li><b>Notas e Precauções:</b> secção de saída em que são mostradas recomendações, interações medicamentosas, entre outras informações pertinentes acerca do fármaco selecionado.</li>
+                    </ul>
+                </section>
+                <section class="article__section article__section--regimes-para-inicios-tarv article__section--fixed">
+                    <h2 class="article__title article__title--level-1">Regimes recomendados para TARV em crianças dos 0 – 14 anos (Novos inícios e as que transitaram para regime com DTG) incluindo crianças em Tratamento anti-tuberculose (TAT)</h2>
+                    <table class="table table--font-small table--no-margin-b">
+                        <thead class="table__header --border-b">
+                            <tr>
+                                <th class="table__cell">Peso (kg)</th>
+                                <th class="table__cell --border-l">Crianças em TARV  (incluíndo crianças  com TB MR)*</th>
+                                <th class="table__cell --border-l">Crianças com TB/HIV (em TAT com regime contendo Rifampicina)**</th>
+                                <th class="table__cell --border-l">Regime de TARV após terminar o tratamento da TB</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="table__cell">3-19.9 kg</td>
+                                <td class="table__cell --border-l">ABC/3TC (120/60) <br> + <br> DTG 10 mg </td>
+                                <td class="table__cell --border-l">ABC/3TC (120/60) + <br> DTG 10 mg <br> + <br> Dose adicional de DTG 10 mg a noite </td>
+                                <td rowspan="4" class="table__cell --border-l">Manter o regime e suspender a dose adicional de DTG duas semanas após o término do tratamento para TB.</td>
+                            </tr>
+                            <tr class="--border-t">
+                                <td class="table__cell">20–24.9 kg</td>
+                                <td class="table__cell --border-l">ABC/3TC (120/60) <br> + <br> DTG 50 mg</td>
+                                <td class="table__cell --border-l">ABC/3TC (120/60) + <br> DTG 50 mg <br> + <br> Dose adicional de DTG 50 mg a noite </td>
+                            </tr>
+                            <tr class="--border-t">
+                                <td class="table__cell">25–29.9 kg</td>
+                                <td class="table__cell --border-l">ABC/3TC (600/300) <br> + <br> DTG 50 mg</td>
+                                <td class="table__cell --border-l">ABC/3TC (600/300) + <br> DTG 50 mg <br> + <br> Dose adicional de DTG 50 mg a noite </td>
+                            </tr>
+                            <tr class="--border-t">
+                                <td class="table__cell">&ge; 30 kg</td>
+                                <td class="table__cell --border-l">TDF/3TC/DTG <br> 300/300/50 mg</td>
+                                <td class="table__cell --border-l">TDF/3TC/DTG 300/300/50 mg <br> + <br> Dose adicional de DTG 50 mg a noite </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="table__footer --border-t">
+                            <tr>
+                                <td colspan="4" class="table__cell table__cell--padding-diff table__cell--text-align-left">
+                                    <span class="table__footer__span table__footer__span--margin-b">* Pacientes co-infectados com TB/HIV em TAT com regime para TB multirresistente (não contendo Rifampicina) não é necessário oferecer a dose adicional de DTG.</span>
+                                    <span class="table__footer__span">** DTG deve ser administrado com intervalo de 12 em 12 horas.</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <p class="bibliography-source"><strong>Fonte:</strong> Políptico Pediátrico - <a href="project-source/poliptico-pediatrico-16-2-2022-finalissima.pdf" download class="element--underline">Manejo de infecção por HIV na criança e adolescente, versão 2022</a>, Tabela 18.</p>
+                    <button class="article__section__btn--close">&times;</button>
+                </section>
+                <section class="article__section article__section--desnutricao article__section--fixed">
+                    <p style="font-size: 12px;">Toque num conteúdo para abreviar a sua localização.</p>
+                    <div class="article__section__table-of-contents table table--grayscale">
+                        <h3 class="table__header table__header--bg-color-grayscale">Conteúdos desta secção</h3>
+                        <ul class="article__list article__list--ul">
+                            <li><a href="#desnutricao-classificacao" class="article__table-of-contents__link">Classificação da Desnutrição Aguda</a></li>
+                            <li><a href="#desnutricao-conduta" class="article__table-of-contents__link">Conduta em caso de Desnutrição Aguda</a></li>
+                            <li><a href="#dam-conduta" class="article__table-of-contents__link">Tipo e quantidade de saquetas de ATPU e ASPU para tratamento da DAM por idade</a></li>
+                            <li><a href="#dag-conduta" class="article__table-of-contents__link">Dosagem de ATPU para tratamento da DAG</a></li>
+                        </ul>
+                    </div>
+                    <h2 class="article__title article__title--level-1" id="desnutricao-classificacao">Classificação da Desnutrição Aguda</h2>
+                    <table class="table table--no-margin-b">
+                        <thead class="table__header --border-b">
+                            <tr>
+                                <th class="table__cell --border-r">Indicadores Nutricionais</th>
+                                <th class="table__cell --border-r">P/E ou IMC para idade</th>
+                                <th class="table__cell --border-r">Perímetro Braquial</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">Desnutrição Aguda Grave (DAG)</td>
+                                <td class="table__cell --border-r">&lt; - 3 DP</td>
+                                <td class="table__cell">
+                                    <ul class="article__list article__list--ul">
+                                        <li>6 - 59 meses: &lt; 11.5 cm</li>
+                                        <li>5 - 10 anos: &lt; 13 cm</li>
+                                        <li>11 - 14 anos: &lt; 16 cm</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">Desnutrição Aguda Moderada (DAM)</td>
+                                <td class="table__cell --border-r">&ge; - 3 DP e &lt; -2 DP</td>
+                                <td class="table__cell">
+                                    <ul class="article__list article__list--ul">
+                                        <li>6 - 59 meses: ≥ 11.5 cm e &lt; 12.5 cm</li>
+                                        <li>5 - 10 anos: ≥ 13 cm e &lt; 14.5 cm</li>
+                                        <li>11 - 14 anos: ≥ 16 cm e &lt; 18.5 cm</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="bibliography-source bibliography-source--with-margin-b"><strong>Fonte:</strong> Políptico Pediátrico - <a href="project-source/poliptico-pediatrico-16-2-2022-finalissima.pdf" download class="element--underline">Manejo de infecção por HIV na criança e adolescente, versão 2022</a>, Tabela 5.</p>
+                    <h2 class="article__title article__title--level-1" id="desnutricao-conduta">Conduta em caso de Desnutrição Aguda</h2>
+                    <table class="table table--no-margin-b">
+                        <thead class="table__header --border-b">
+                            <tr>
+                                <th colspan="2" class="table__cell --border-r">Conduta em caso de Desnutrição Aguda  em crianças</th>
+                                <th class="table__cell --border-r">Critérios para Alta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">DAG com complicações (HIV +/-)</td>
+                                <td class="table__cell --border-r"><b>Fase 1:</b> Internamento F75/ F100 <br> <b>Fase 2:</b> ATPU em ambulatório</td>
+                                <td rowspan="3" class="table__cell --border-l">P/E ou IMC/Idade ≥ -1 DP em 2 pesagens sucessivas <br> ou <br> PB em duas avaliações sucessivas: 
+                                    <ul class="article__list article__list--ul">
+                                        <li>6-59 meses: &ge; 12.5 cm</li>
+                                        <li>5-10 anos: &ge; 14.5 cm </li>
+                                        <li>11-14 anos: &ge; 18.5 cm</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">DAG sem complicações (&ge; 6 meses, HIV +/-)</td>
+                                <td class="table__cell">ATPU em ambulatório</td>
+                            </tr>
+                            <tr>
+                                <td class="table__cell --border-r">DAM (&ge; 6 meses, HIV +/-)</td>
+                                <td class="table__cell">CSB ou ASPU em ambulatório</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="table__footer --border-t">
+                            <td colspan="3" class="table__cell table__cell--padding-diff table__cell--text-align-left">
+                                <span class="table__footer__span"><strong>Nota:</strong> Após a alta, continuar o controlo regular por mais 3 meses para assegurar que a criança mantém o P/E ou IMC ≥ -1 DP.</span>
+                            </td>
+                        </tfoot>
+                    </table>                 
+                    <p class="bibliography-source bibliography-source--with-margin-b"><strong>Fonte:</strong> Políptico Pediátrico - <a href="project-source/poliptico-pediatrico-16-2-2022-finalissima.pdf" download class="element--underline">Manejo de infecção por HIV na criança e adolescente, versão 2022</a>, Tabela 6.</p>
+                    <h2 class="article__title article__title--level-1" id="dam-conduta">Tipo e quantidade de saquetas de ATPU e ASPU para tratamento da DAM por idade</h2>
+                    <table class="table table--no-margin-b">
+                        <thead class="table__header --border-b">
+                            <tr>
+                                <th colspan="2" class="--border-r">Quantidade de ASPU para tratamento da DAM/idade</th>
+                                <th colspan="2" class="--border-r">Quantidade de ATPU para tratamento da DAM/ idade</th>
+                            </tr>
+                            <tr class="--border-t">
+                                <td class="table__cell --border-r">Idade</td>
+                                <td class="table__cell --border-r">Nº de Saquetas ASPU/dia</td>
+                                <td class="table__cell --border-r">Idade</td>
+                                <td class="table__cell">Nº de Saquetas ATPU/dia </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table__cell --border-b">
+                                <td class="table__cell --border-r">6 - 59 meses</td>
+                                <td class="table__cell --border-r">1 saqueta/dia</td>
+                                <td class="table__cell --border-r">6 - 11 meses</td>
+                                <td class="table__cell">1 saqueta/dia</td>
+                            </tr>
+                            <tr>
+                                <td class="table__cell --border-r">&ge; 5 anos</td>
+                                <td class="table__cell --border-r">2 saquetas/dia</td>
+                                <td class="table__cell --border-r">&ge; 12 meses</td>
+                                <td class="table__cell">2 saquetas/dia</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="table__footer --border-t">
+                            <td colspan="4" class="table__cell table__cell--padding-diff table__cell--text-align-left">
+                                <span class="table__footer__span"><strong>Nota:</strong> O ASPU é a 1ª opção para tratamento da DAM e deve ser administrado as crianças &ge; 6 meses. Em caso de limitação do stock de ASPU, priorizar a prescrição para crianças &lt; 5 anos e nesse caso, reservar o MAE (CSB Plus/Super Cereal) para crianças &ge; de 5 anos, adolescentes e adultos. O ATPU só pode ser utilizado como alternativa somente na ausência do ASPU e MAE.</span>
+                            </td>
+                        </tfoot>
+                    </table>               
+                    <p class="bibliography-source bibliography-source--with-margin-b"><strong>Fonte:</strong> Políptico Pediátrico - <a href="project-source/poliptico-pediatrico-16-2-2022-finalissima.pdf" download class="element--underline">Manejo de infecção por HIV na criança e adolescente, versão 2022</a>, Tabela 7.</p>
+                    <h2 class="article__title article__title--level-1" id="dag-conduta">Dosagem de ATPU para tratamento da DAG
+                    </h2>
+                    <table class="table table--layout-fixed table--no-margin-b">
+                        <thead class="table__header --border-b">
+                            <tr>
+                                <th class="table__cell --border-r">Peso (Kg)</th>
+                                <th class="table__cell --border-r">Total de saquetas de ATPU para 24 horas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">4.0 - 4.9</td>
+                                <td class="table__cell">2</td>
+                            </tr>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">5.0 - 6.4</td>
+                                <td class="table__cell">2.5</td>
+                            </tr>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">6.5 - 8.0</td>
+                                <td class="table__cell">3</td>
+                            </tr>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">8.1 - 9.0</td>
+                                <td class="table__cell">3.5</td>
+                            </tr>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">9.1 - 10.0</td>
+                                <td class="table__cell">4</td>
+                            </tr>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">10.1 - 11.4</td>
+                                <td class="table__cell">4.5</td>
+                            </tr>
+                            <tr class="--border-b">
+                                <td class="table__cell --border-r">&ge; 11.5</td>
+                                <td class="table__cell">5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="bibliography-source"><strong>Fonte:</strong> Políptico Pediátrico - <a href="project-source/poliptico-pediatrico-16-2-2022-finalissima.pdf" download class="element--underline">Manejo de infecção por HIV na criança e adolescente, versão 2022</a>, Tabela 8.</p>
+                    <button class="article__section__btn--close">&times;</button>
+                </section>
+            </article>
+        </main>
+        <section class="advertising">
+            <div class="advertising__row">
+                <h4 class="advertising__row__title">Talvez se interesse também por:</h4>
+                <div class="advertising__row__container-of-cards">
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/tarv-pediatrico.png" alt="Tarv Pediátrico" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Tarv Pediátrico</h5>
+                            <p class="advertising__card__description">Doseia automaticamente os ARVs, Cotrimoxazol e fármacos preventivos de tuberculose (Isoniazida, 3HP e Levofloxacina) de acordo com o peso inserido pelo usuário.</p>
+                            <a href="https://quinamine.github.io/tarv-pediatrico/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/calculadora-de-doses-pediatricas.png" alt="Calculadora de Doses Pediátricas" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Calculadora de Doses Pediátricas</h5>
+                            <p class="advertising__card__description">Doseia automaticamente alguns dos fármacos mais usuais na prática clínica de acordo com o peso inserido pelo usuário.</p>
+                            <a href="https://quinamine.github.io/calculadora-de-doses-pediatricas/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-hiv.png" alt="Totalizador de Resumo Mensal de HIV/SIDA" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de HIV/SIDA</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente, com base nos dados inseridos pelo usuário, o resumo mensal de HIV/SIDA.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-hiv-e-sida/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-tuberculose.png" alt="Totalizador de Resumo Mensal de Tuberculose" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de Tuberculose</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente o resumo mensal de rastreio, notificação de casos de TB e TB/HIV com base nos dados inseridos pelo usuário.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-tuberculose/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-ats.png" alt="Totalizador de Resumo Mensal de ATS" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de ATS</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente o resumo mensal de Aconselhamento e Testagem em Saúde com base nos dados inseridos pelo usuário.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-ats/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-trimestral-de-apss-e-pp.png" alt="Totalizador de Resumo Trimestral de APSS/PP" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Trimestral de APSS/PP</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente o resumo trimestral de Apoio Psicossocial e Prevenção Positiva com base nos dados inseridos pelo usuário.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-trimestral-de-apss-e-pp/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-consultas.png" alt="Totalizador de Resumo Mensal de Consultas" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de Consultas</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente, com base nos dados inseridos pelo usuário, o resumo mensal de consultas externas.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-consultas/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-ccd.png" alt="Totalizador de Resumo Mensal de CCD" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de CCD</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente o resumo mensal de Consulta da Criança Doente com base nos dados inseridos pelo usuário.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-ccd/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-malaria.png" alt="Totalizador de Resumo Mensal de Malária" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de Malária</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente, com base nos dados inseridos pelo usuário, o resumo mensal de Malária.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-malaria/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-saaj.png" alt="Totalizador de Resumo Mensal de SAAJ" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de SAAJ</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente o resumo mensal do Serviço Amigo do Adolescente e Jovem com base nos dados inseridos pelo usuário.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-saaj/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-prn-i.png" alt="Totalizador de Resumo Mensal de PRN 1" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de PRN I</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente o resumo mensal de tratamento de desnutrição em ambulatório para crianças dos 6 meses aos 14 anos com base nos dados inseridos pelo usuário.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-prn-i/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-resumo-mensal-de-prn-ii.png" alt="Totalizador de Resumo Mensal de PRN 2" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Resumo Mensal de PRN II</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente o resumo mensal do Programa de Reabilitação Nutricional para pacientes &ge; 15 Anos com base nos dados inseridos pelo usuário.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-resumo-mensal-de-prn-ii/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/totalizador-de-mapa-resumo-mensal-de-caixa.png" alt="Totalizador de Mapa Resumo Mensal de Caixa" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Totalizador de Mapa Resumo Mensal de Caixa</h5>
+                            <p class="advertising__card__description">Totaliza automaticamente, com base nos dados inseridos pelo usuário, o mapa resumo mensal de caixa.</p>
+                            <a href="https://quinamine.github.io/totalizador-de-mapa-resumo-mensal-de-caixa/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="advertising__card">
+                        <figure class="advertising__card__frame">
+                            <img src="images/requisicao-balancete.png" alt="Requisição/Balancete" class="advertising__card__img">
+                        </figure>
+                        <div class="advertising__card__container-of-description">
+                            <h5 class="advertising__card__title">Requisição/Balancete</h5>
+                            <p class="advertising__card__description">Calcula automaticamente o Stock Teórico Fim do Período, Diferença entre stock teórico e stock físico e Quantidade a Requisitar com base nos dados de controlo da ficha de stock e inventário preenchidos pelo usuário.</p>
+                            <a href="https://quinamine.github.io/requisicao-balancete/index.html" class="advertising__card__link">Acessar &raquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            </div>
+        <footer class="footer --no-print">
+            <div class="layout-row layout-row--flex-direction-col">
+                <div class="footer__bibliography-sources">
+                    <h5 class="footer__bibliography-sources__title">Fontes bibliográficas:</h5>
+                    <p class="footer__p footer__p--text-align-l footer__p--highlight"><a href="project-source/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" download="Guião_Normas_clínicas_PNCT_Dez19" class="element--underline">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019, especificamente:</p>
+                    <ul class="footer__bibliography-sources__list">
+                        <li>Tratamento de 1ª linha na TB Infantil - Páginas 41 e 42;</li>
+                        <li>Posologia do Tratamento TB-MR para Crianças (< 30kg) - Pág. 67</li>
+                    </ul>
+                    <p class="footer__p footer__p--text-align-l footer__p--highlight"><a href="project-source/poliptico-pediatrico-16-2-2022-finalissima.pdf" download class="element--underline">Manejo de infecção por HIV na criança e adolescente, versão 2022</a> (Políptico Pediátrico), especificamente:</p>
+                    <ul class="footer__bibliography-sources__list">
+                        <li>Classificação da Desnutrição Aguda - Tabela 5;</li>
+                        <li>Conduta em caso de Desnutrição Aguda - Tabela 6;</li>
+                        <li>Tipo e quantidade de saquetas de ATPU e ASPU para tratamento da DAM por idade - Tabela 7;</li>
+                        <li>Dosagem de ATPU para tratamento da DAG - Tabela 8;</li>
+                        <li>Regimes recomendados para TARV em crianças dos 0 – 14 anos (Novos inícios e as que transitaram para regime com DTG) incluindo crianças em TAT - Tabela 18;</li>
+                        <li>Regimes alternativos em caso de intolerância aos ARVs - Tabela 20.</li>
+                    </ul>
+                </div>
+                <p class="footer__p footer__p--created-by">
+                    Desenvolvido por <a href="https://quinamine.github.io/aderito-felix-quinamine/index.html" title="Acessar biografia &raquo;">Adérito Félix Quinamine</a> - TAT&nbsp;Pediátrico&nbsp;2024
+                </p>
+                <a href="#root" class="footer__link-back-to-top">Rolar para o topo</a>
+            </div>
+        </footer>
+        <div class="blurringDiv"></div>
+    </body>
+</html>
+    

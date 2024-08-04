@@ -1,0 +1,6 @@
+[1030/123525.499:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+[1112/051618.372:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+[1112/072626.314:ERROR:process_reader_win.cc(151)] SuspendThread: Acesso negado. (0x5)
+[1112/072626.314:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[1112/072626.346:ERROR:exception_snapshot_win.cc(99)] thread ID 7544 not found in process
+[1114/105057.478:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
