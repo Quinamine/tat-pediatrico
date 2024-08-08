@@ -14,50 +14,33 @@ const menu = {
     closeArticle(article) {
         article.classList.remove("--open");
     },
-    filtrarEstadioClinicoOMS(classNameDoEstadioSelecionado) {
-        const estadios = document.querySelectorAll(".estadio");
-        for (const estadio of estadios) {
-            if(classNameDoEstadioSelecionado === "todos") {
-                estadio.classList.remove("--display-none");
-            } else {
-                estadio.classList.add("--display-none");
-                let estadioSelecionado = document.querySelector(`.${classNameDoEstadioSelecionado}`);
-                estadioSelecionado.classList.remove("--display-none");
-            }
-        }
-    },
     showCurrentTabDoser(currentTab) {
         // Change Doser and Document Title
         const doserTitle = document.querySelector(".doser__title");
         doserTitle.textContent = currentTab.title;
-        // Show current tab article
+        // highlight current btn menu
+        const mainMenuTabs = document.querySelectorAll(".header__main-menu__btn");
+        for (const menuTab of mainMenuTabs) {
+            menuTab.classList.remove("header__main-menu__btn--current");
+        }
         currentTab.classList.add("header__main-menu__btn--current");
         // Show currentTab Medicines
         const doserOptgroups = document.querySelectorAll(".doser__select__optgroup");
-        const currenTabMedicines = document.querySelectorAll(`.${currentTab.dataset.optgroup}`);
+        const currenTabMedicines = document.querySelector(`.${currentTab.dataset.optgroup}`);
         for (const optgroup of doserOptgroups) {
             optgroup.classList.add("--display-none");
         }
-        for (const medicine of currenTabMedicines) {
-            medicine.classList.remove("--display-none");
-        }
+        currenTabMedicines.classList.remove("--display-none");
         // Select currentTab default medicine
-        const labelForSelect = document.querySelector(".doser__label--medicine");
-        const inputTypeSearchIntoSelect = document.querySelector(".doser__select__searching-box");
-        
         let options = document.querySelectorAll(".doser__select__option");
         for (const option of options) {
             option.classList.remove("--selected");
         }
         let defaultOption;
-        if(currentTab.title === "Doseador de Antirretrovirais") {
-            defaultOption = document.querySelector(".doser__select__option--placeholder");
-            inputTypeSearchIntoSelect.classList.remove("--display-none");
-            labelForSelect.textContent = "ARV:";    
+        if(currentTab.title === "Doseador de Piridoxina") {
+            defaultOption = document.querySelector(".doser__select__option--vit-b6-25mg"); 
         } else {
-            defaultOption = document.querySelectorAll(`.${currentTab.dataset.optgroup} li`)[0];
-            inputTypeSearchIntoSelect.classList.add("--display-none");
-            labelForSelect.textContent = "Fármaco:"; 
+            defaultOption = document.querySelector(".doser__select__option--placeholder"); 
         }
         defaultOption.classList.add("--selected");
     }
@@ -94,21 +77,15 @@ function listenToEvents() {
         });
     });
     // Open main-menu-tabs;
-    const menuTabs = document.querySelectorAll(".header__main-menu__btn");
-    menuTabs.forEach( tab => {
-        tab.addEventListener("click", () => menu.showCurrentTabDoser(tab));
-    });
-    // Filter VIH Clinical Stage
-    const selectDeEstadios = document.querySelector(".article__staging__select");
-    selectDeEstadios.addEventListener("change", () => {
-        let classNameDoEstadioSelecionado = selectDeEstadios.options[selectDeEstadios.selectedIndex].value;
-        menu.filtrarEstadioClinicoOMS(classNameDoEstadioSelecionado);
+    const mainMenuBtns = document.querySelectorAll(".header__main-menu__btn");
+    mainMenuBtns.forEach( btn => {
+        btn.addEventListener("click", () => menu.showCurrentTabDoser(btn));
     });
     // Share
     let data = {
-        title: "TAT Pediátrico",
-        text: 'O TAT Pediátrico</b> é um serviço online gratuito com um Doseador de medicamentos anti-tuberculose (MATs) que, de acordo com o peso inserido pelo usuário, determina automaticamente doses terapêuticas dos MATs para crianças e adolescentes em tratamento anti-tuberculose (TAT), e um Doseador de piridoxina para profilaxia de Neuropatia Periférica. O serviço é baseado no guião "Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019" actualmente vigente no Serviço Nacional de Saúde (SNS) em Moçambique.',
-        url: "https://quinamine.github.io/tat-pediatrico/index.html"
+        title: "Tarv Pediátrico",
+        text: "O Tarv Pediátrico é um serviço online gratuito com um Doseador de ARVs (de acordo com o peso inserido pelo usuário, determina automaticamente doses terapêuticas de antirretrovirais para crianças e adolescentes em cuidados e tratamento), Doseador de Cotrimoxazol para tratamento profilático (TPC) e Doseador de fármacos preventivos de tuberculose (Isoniazida, 3HP e Levofloxacina). O serviço é baseado no Políptico Pediátrico - Manejo de infecção por HIV na criança e adolescente, versão 2022, actualmente vigente no Serviço Nacional de Saúde (SNS) em Moçambique.",
+        url: "https://quinamine.github.io/tarv-pediatrico/index.html"
     }
     let btnShare = document.querySelector(".meatballs-menu-expanded__option--share");
     btnShare.addEventListener("click", () => {
