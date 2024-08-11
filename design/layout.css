@@ -49,6 +49,11 @@
 #body.--overflow-h {
     overflow: hidden;
 }
+@media screen and (max-width: 1023px) {
+    #body.--overflow-hide-on-mobile {
+        overflow: hidden;
+    }
+}
 #main {
     flex: 1;
 }
@@ -452,6 +457,11 @@
 .doser__select__option:hover {
     background-color: var(--gray--d);
 }
+.doser__select.--open
+.doser__select__option--os-mesmos-da-fase-i:hover {
+    background-color: inherit;
+    cursor: default;
+}
 .bibliography-source {
     font-size: 11px;
     display: inline-block;
@@ -830,6 +840,7 @@
     font-size: 15px;
     font-weight: 700;
     color: var(--yt);
+    margin-bottom: 12.5px;
 }
 .footer__bibliography-sources__list {
     padding-left: 15px;
@@ -845,11 +856,9 @@
     line-height: 1.5;
     padding: 15px 0;
 }
-.footer__p--text-align-l {
-    text-align: left;
-}
-.footer__p--highlight {
+.footer__bibliography-sources__link {
     color: var(--yt);
+    font-weight: 700;
 }
 .footer__p--created-by {
     width: 100%;
@@ -882,10 +891,6 @@
     z-index: 888;
 }
 /* CSS REUTILIZÁVEL */
-.element--underline {
-    text-decoration: underline;
-    color: inherit;
-}
 .hide-on-mobile {
     display: none;
 }

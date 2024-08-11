@@ -11,12 +11,16 @@ const doserGeneralFunctions = {
         doserSelect.classList.toggle("--open");
         const selectOfMedicines = document.querySelector(".doser__section--medicines");
         doserGeneralFunctions.highlightFocusedInput(selectOfMedicines);
+        const body = document.querySelector("#body");
+        body.classList.toggle("--overflow-hide-on-mobile");
     },
     closeSelect() {
         const doserSelect = document.querySelector(".doser__select");
         doserSelect.classList.remove("--open");
         const selectOfMedicines = document.querySelector(".doser__section--medicines");
         doserGeneralFunctions.removehighlightFromFocusedInput(selectOfMedicines);
+        const body = document.querySelector("#body");
+        body.classList.remove("--overflow-hide-on-mobile");
     },
     selectAnOption(optionToSelect) {
         const options = document.querySelectorAll(".doser__select__option");
@@ -53,32 +57,45 @@ class Doser {
         if(this.medicine.includes("dfc-ped") && this.weight < 4){
             note = `<b>(1)</b> Descartar a solução de ${this.medicine.split("-ped")[0].toUpperCase()} que sobrar após a administração. <strong>(2) As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.`
         } else if(this.medicine.includes("dfc-ped") && this.weight >= 4 && this.weight < 25) {
-            note = `Dissolver o(s) comprimido(s) de ${this.medicine.split("-ped")[0].toUpperCase()} de acordo com o peso da criança e a quantidade de água recomendada. Após a dissolução, administre todo o medicamento de imediato à criança. Se restar algum medicamento no fundo do copo acrescente um pouco mais de água e administre.`;
+            note = `<b>(1)</b> Dissolver o(s) comprimido(s) de ${this.medicine.split("-ped")[0].toUpperCase()} de acordo com o peso da criança e a quantidade de água recomendada. Após a dissolução, administre todo o medicamento de imediato à criança. Se restar algum medicamento no fundo do copo, acrescente um pouco mais de água e administre. ${this.medicine.split("-ped")[0].toUpperCase()}<sup>dispersível</sup> deve sempre ser dissolvido em água. Não deve ser tomado inteiro mesmo que a criança consiga engolir. <b>(2)</b> Pacientes em TARV com regime contendo Dolutegravir (DTG), devem ajustar a dose de DTG (DTG 12/12 horas) durante o tempo que recebem Rifampicina (contida no ${this.medicine.split("-ped")[0].toUpperCase()}) e por mais 2 semanas. Depois passam a tomar o DTG apenas 1 vez/dia.`;
         } else if(this.medicine === "3dfc-ped" && this.weight >= 25) {
             note = 'Para peso &ge; 25 kg, use <strong>4DFC (RHZE) 150/75/400/275 mg Comp.</strong>'
         } else if(this.medicine === "2dfc-ped" && this.weight >= 25) {
             note = 'Para peso &ge; 25 kg, use <strong>2DFC adulto (RH) 150/75 mg Comp.</strong>'
+        } else if(this.medicine.includes("dfc-adulto") && this.weight >= 25) {
+            note = `A Rifampicina (incluída no ${this.medicine.split("-adulto")[0].toUpperCase()}) reduz os níveis dos inibidores de protease (IPs) (LPV/r, ATV/r). 
+            <br> • &nbsp; ATV/r e Rifampicina: Associação não recomendada; 
+            <br> • &nbsp; LPV/r e Rifampicina: ajustar a dose de LPV/r (<a href="https://quinamine.github.io/tarv-pediatrico/index.html">Acessar Doseador de ARVs</a> para dosagem do LPV/r e RTV isolado para potenciação (superboosting) durante o TAT). 
+            <br> • &nbsp; Os pacientes em TARV com ATV/r ou LPV/r devem substituir o Inibidor da protease por DTG. 
+            <br> • &nbsp; A dose de DTG deve ser ajustada durante o tempo que o paciente recebe tratamento com Rifampicina (e por mais 2 semanas). O ajuste deste medicamento é feito da seguinte forma: duplicar a dose diária de DTG (DTG 12/12 horas, até o fim do tratamento de TB e por mais 2 semanas). 
+            <br><strong>Todos os pacientes que iniciam DTG no sector de PNCT, mantêm este tratamento após terem alta do sector.</strong>`
         } else if(this.medicine  === "4dfc-adulto" && this.weight < 25) {
             note = 'Para peso &lt; 25 kg, use <strong>3DFC (RHZ) 75/50/150 mg Comp.</strong> e <strong>Etambutol 100 mg Comp.</strong>'
         } else if(this.medicine  === "2dfc-adulto" && this.weight < 25) {
             note = 'Para peso &lt; 25 kg, use <strong>2DFC pediátrico (RH) 75/50 mg Comp.</strong>'
-        } else if(this.medicine === "e100" && this.weight < 25) {
+        } else if(this.medicine === "e100" && this.weight < 4) {
             note = '<b>(1)</b> Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar. <strong>(2) As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.'
+        } else if(this.medicine === "e100" && this.weight < 25) {
+            note = 'Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar.'
         } else if(this.medicine ==="e100" && this.weight >= 25) {
             note = 'O <b>Etambutol 100 mg Comp.</b> está indicado para crianças com peso &lt; 25 kg.'
         } else if(this.medicine ==="bdq-100" && this.weight >= 30) {
-            note = '*Dose de indução durante as 2 primeiras semanas.'
+            note = '<b>(1)</b> *Dose de indução durante as 2 primeiras semanas. <b>(2)</b> Bedaquilina e Inibidores da protease (ATV/r, LPV/r): evitar combinação sempre que possível. IPs aumentam os níveis de Bedaquilina, com risco aumentado de toxicidade cardíaca e hepática. <strong>Em resumo, em pacientes em tratamento com o regime padrão para TB-MR, é preferível a combinação de TAT com um esquema de TARV contendo Dolutegravir.</strong>'
         } else if(this.medicine ==="lzd-600" && this.weight >= 30) {
-            note = 'No regime padronizado, Linezolide é administrado apenas durante a fase intensiva.'
+            note = '<b>(1)</b> No regime padronizado, Linezolide é administrado apenas durante a fase intensiva. <b>(2)</b> AZT e Linezolide: evitar essa combinação pelo risco de mielotoxicidade (anemia, neutropenia, trombocitopenia).'
         } else if(this.medicine ==="cs-250" && this.weight >= 30) {
             note = 'Se intolerância, dividir a dose em 2 tomas diárias.'
-        } else {
+        } else if(this.medicine ==="cs-250" && this.weight >= 30) {
+            note = 'Se intolerância, dividir a dose em 2 tomas diárias.'
+        } else if(this.medicine ==="piridoxina-50mg" && this.weight < 5) {
+            note = 'Para peso &lt; 5 kg, use <strong>Piridoxina 25 mg Comp.</strong>'
+        }  else {
             note = "";
         }
         return note;
     }
     determinarDose() {
-        let dose;
+        let dose, posologia = "/dia";
         let weight = this.weight;
         if(this.medicine.includes("dfc-ped") && weight < 4) {
             let doseEmMl, doseEmCp;
@@ -92,13 +109,13 @@ class Doser {
                 doseEmMl = 7.5;
                 doseEmCp = "<sup>3</sup>/<sub>4</sub>";
             }
-            return this.printDoseDe2ou3dfcPedMenosDe4kg(doseEmMl, doseEmCp);
+            return this.printDoseDispersivelSePesoMenorQ4kg(doseEmMl, doseEmCp);
         } else if(this.medicine === "e100" && weight < 4) {
-            weight < 2 ? dose = 0.25 
+            weight < 2 ? dose = 0.25
             : weight < 3 ? dose = 0.5 
             : dose = 0.75;
         } else if(this.medicine.includes("dfc-ped") || this.medicine === "e100") {
-            if(weight < 8) {
+            if(weight < 8 && weight >= 4) {
                 dose = 1;
             } else if(weight < 12) {
                 dose = 2;
@@ -123,21 +140,21 @@ class Doser {
             } 
         } else if(this.medicine === "bdq-100") {
             if(weight < 30) {
-                return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
+                return this.alertarMinPesoDeveSer30();
             } else {
                 return this.printDoseDeBdqPeso30ouMais();
             }
         } else if(this.medicine === "lzd-600") {
             if(weight < 30) {
-                return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
+                return this.alertarMinPesoDeveSer30();
             } else if(weight < 36) {
                 dose = 0.5;   
             } else {
-                dose= 1;
+                dose = 1;
             }
         } else if(this.medicine === "lfx-250") {
             if(weight < 30) {
-                return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
+                return this.alertarMinPesoDeveSer30();
             } else if(weight < 46) {
                 dose = 3;   
             } else {
@@ -145,13 +162,13 @@ class Doser {
             }
         } else if(this.medicine === "cfz-100") {
             if(weight < 30) {
-                return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
+                return this.alertarMinPesoDeveSer30();
             } else {
                 dose = 1;
             }
         } else if(this.medicine === "cs-250") {
             if(weight < 30) {
-                return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
+                return this.alertarMinPesoDeveSer30();
             } else if(weight < 56) {
                 dose = 2;   
             } else {
@@ -159,42 +176,33 @@ class Doser {
             }
         } else if(this.medicine === "piridoxina-25mg") {
             if(weight < 5) {
-                dose = "<sup>1</sup>/<sub>2</sub> 3 vezes/semana";
+                dose = 0.5;
+                posologia = " 3 vezes/semana";
             } else if(weight < 8) {
-                dose = "<sup>1</sup>/<sub>2</sub>/dia";   
+                dose = 0.5
             } else if(weight < 15) {
-                dose = "<sup>1 cp(s)/dia";   
+                dose = 1;
             } else {
-                dose = "<sup>2 cp(s)/dia";
+                dose = 2;
             }
         } else if(this.medicine === "piridoxina-50mg") {
             if(weight < 5) {
                 return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
             } else if(weight < 15) {
-                dose = "<sup>1</sup>/<sub>2</sub> 3 vezes/semana";   
+                dose = 0.5; // 3 vezes por semana
+                posologia = " 3 vezes/semana";  
             } else {
-                dose = "<sup>1 cp(s)/dia";
+                dose = 1;
             }
         }
-        return this.printDose(dose)
+        return this.printDoseEmCp(dose, posologia);
     }
-    printDose(dose) {
+    printDoseEmCp(dose, posologia) {
         if(this.medicine.includes("dfc-ped")) {
-            return this.printDoseDe2ou3dfcPed(dose);
+            return this.printDoseDispersivel(dose, (dose * 10));
         }
-        // Calcular quantidade de cps ou frascos por fornecer ao paciente
-        let dispensaPara14Dias, dispensaPara28Dias;
-        dispensaPara14Dias = dose * 14;
-        dispensaPara28Dias = dose * 28;
-       
-         // Converter dose de Etambutol se peso < 4
-         if(dose === 0.25) {
-            dose = "<sup>1</sup>/<sub>4</sub>";
-        } else if(dose === 0.5) {
-            dose = "<sup>1</sup>/<sub>2</sub>"; 
-        } else if(dose === 0.75) {
-            dose = "<sup>3</sup>/<sub>4</sub>";
-        }
+        let numeroDetomasPorSemana; // Variável essencial para o cálculo de dispensa para 14 ou 28 dias;
+        posologia.includes("3 vezes/semana") ? numeroDetomasPorSemana = 3 : numeroDetomasPorSemana = 7;
 
         return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
             <thead class="table__header table__header--bg-color-grayscale">
@@ -204,26 +212,20 @@ class Doser {
             </thead>
             <tbody>
                 <tr class="--border-t">
-                    <td class="table__cell" colspan="2">${dose} cp(s) uma vez/dia</td> 
+                    <td class="table__cell" colspan="2">${this.converterDoseDecimalEmFracao(dose)} cp(s)${posologia}</td> 
                 </tr>
                 <tr class="table__header table__header--bg-color-grayscale --border-t">
                     <td class="table__cell">Dispensa para <br> 14 dias</td> 
                     <td class="table__cell">Dispensa para <br> 28 dias</td>
                 </tr>
                 <tr class="--border-b --border-t">
-                    <td class="table__cell">${dispensaPara14Dias} cp(s)</td> 
-                    <td class="table__cell">${dispensaPara28Dias} cp(s)</td>
+                    <td class="table__cell">${this.calcularDispensaPara2semanas(dose, numeroDetomasPorSemana)} cp(s)</td> 
+                    <td class="table__cell">${this.calcularDispensaPara4semanas(dose, numeroDetomasPorSemana)} cp(s)</td>
                 </tr>                   
             </tbody>
         </table>`
     }
-    printDoseDe2ou3dfcPed(dose) {
-        // Calcular quantidade de cps ou frascos por fornecer ao paciente
-        let qtdDeAguaParaDiluicao, dispensaPara14Dias, dispensaPara28Dias;
-        qtdDeAguaParaDiluicao = dose * 10;
-        dispensaPara14Dias = dose * 14;
-        dispensaPara28Dias = dose * 28;
-       
+    printDoseDispersivel(dose, qtdDeAguaParaDiluicao) {
         return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
             <thead class="table__header table__header--bg-color-grayscale">
                 <tr class="--border-t">
@@ -241,13 +243,13 @@ class Doser {
                     <td class="table__cell">Dispensa para <br> 28 dias</td>
                 </tr>
                 <tr class="--border-b --border-t">
-                    <td class="table__cell">${dispensaPara14Dias} cp(s)</td> 
-                    <td class="table__cell">${dispensaPara28Dias} cp(s)</td>
+                    <td class="table__cell">${this.calcularDispensaPara2semanas(dose, 7)} cp(s)</td> 
+                    <td class="table__cell">${this.calcularDispensaPara4semanas(dose, 7)} cp(s)</td>
                 </tr>                   
             </tbody>
         </table>` 
     }
-    printDoseDe2ou3dfcPedMenosDe4kg(doseEmMl, doseEmCp) {
+    printDoseDispersivelSePesoMenorQ4kg(doseEmMl, doseEmCp) {
         return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
             <thead class="table__header table__header--bg-color-grayscale">
                 <tr class="--border-t">
@@ -291,6 +293,21 @@ class Doser {
             </tbody>
         </table>` 
     }
+    converterDoseDecimalEmFracao(doseDecimal) {
+        return doseDecimal === 0.25 ? doseDecimal = "<sup>1</sup>/<sub>4</sub>"
+        : doseDecimal === 0.5 ? doseDecimal = "<sup>1</sup>/<sub>2</sub>"
+        : doseDecimal === 0.75 ? doseDecimal = "<sup>3</sup>/<sub>4</sub>"
+        : doseDecimal = doseDecimal;
+    }
+    calcularDispensaPara2semanas(dose, numeroDetomasPorSemana) {
+        return dose * numeroDetomasPorSemana * 2; // Em que 2 corresponde as semanas de dispensa;
+    }
+    calcularDispensaPara4semanas(dose, numeroDetomasPorSemana) {
+        return dose * numeroDetomasPorSemana * 4; // Em que 4 corresponde as semanas de dispensa;
+    }
+    alertarMinPesoDeveSer30() {
+        return '<p class="doser__section__note">O Doseador de MAT da 2ª linha não prevê dosagem para crianças com peso < 30 kg.</p>';
+    }
 }
 function instantiateDoser() {
     let weight = document.querySelector(".doser__input--weight").value;
@@ -333,7 +350,10 @@ function listenToDoserEvents() {
     // Toggle select (Open or Close);
     const selectOpeners = document.querySelectorAll(".doser__select__option, .select-opener");
     selectOpeners.forEach(opener => {
-        opener.addEventListener("click", doserGeneralFunctions.openOrCloseSelect);
+        opener.addEventListener("click", () => {
+            if(opener.dataset.isnotamedicine) return false;
+            doserGeneralFunctions.openOrCloseSelect();
+        });
     });
     // Close select by clicking anywhere 
     window.addEventListener("click", event => {
@@ -342,7 +362,10 @@ function listenToDoserEvents() {
     // Select an option
     const medicines = document.querySelectorAll(".doser__select__option");
     medicines.forEach( medicine => {
-        medicine.addEventListener("click", () => doserGeneralFunctions.selectAnOption(medicine));
+        medicine.addEventListener("click", () => {
+            if(medicine.dataset.isnotamedicine) return false;
+            doserGeneralFunctions.selectAnOption(medicine);
+        });
     });
     // Determine doses
     inputForWeight.addEventListener("input", instantiateDoser);
