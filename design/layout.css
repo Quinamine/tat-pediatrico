@@ -119,6 +119,8 @@
 .meatballs-menu-expanded {
     width: 90vw;
     max-width: 380px;
+    max-height: 100vh;
+    overflow-y: auto;
     border-radius: 8px;
     box-shadow: 0 0 10px var(--text-color);
     position: fixed;
@@ -583,6 +585,9 @@
     width: 100%;
     max-width: 690px;
     line-height: 1.5;
+}
+.table--max-width-375 {
+    max-width: 375px;
 }
 .table--no-margin-b {
     margin-bottom: 0;

@@ -83,9 +83,9 @@ function listenToEvents() {
     });
     // Share
     let data = {
-        title: "Tarv Pediátrico",
-        text: "O Tarv Pediátrico é um serviço online gratuito com um Doseador de ARVs (de acordo com o peso inserido pelo usuário, determina automaticamente doses terapêuticas de antirretrovirais para crianças e adolescentes em cuidados e tratamento), Doseador de Cotrimoxazol para tratamento profilático (TPC) e Doseador de fármacos preventivos de tuberculose (Isoniazida, 3HP e Levofloxacina). O serviço é baseado no Políptico Pediátrico - Manejo de infecção por HIV na criança e adolescente, versão 2022, actualmente vigente no Serviço Nacional de Saúde (SNS) em Moçambique.",
-        url: "https://quinamine.github.io/tarv-pediatrico/index.html"
+        title: "TAT Pediátrico",
+        text: "O TAT Pediátrico doseia automaticamente fármacos anti-tuberculose e piridoxina de acordo com o peso inserido pelo usuário. Tem como referência o guião de Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019 que, até a data de publicação do TAT (11/08/2024), ainda estava em vigor no Serviço Nacional de Saúde em Moçambique.",
+        url: "https://quinamine.github.io/tat-pediatrico/index.html"
     }
     let btnShare = document.querySelector(".meatballs-menu-expanded__option--share");
     btnShare.addEventListener("click", () => {
@@ -93,7 +93,7 @@ function listenToEvents() {
             navigator.share(data).then( () => {
                 console.log("Partilha bem sucedida.");
             }).catch(error => {
-                console.log(`Não foi possível partilhar o Tarv Pediátrico devido ao erro: ${error}.`);
+                console.log(`Não foi possível partilhar o TAT Pediátrico devido ao erro: ${error}.`);
             });
         } catch (error) {
             console.log('O seu navegador não tem suporte ao método "navigator.share()".');

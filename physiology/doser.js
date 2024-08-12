@@ -357,7 +357,7 @@ function listenToDoserEvents() {
     });
     // Close select by clicking anywhere 
     window.addEventListener("click", event => {
-        !event.target.matches(".doser__select *, .select-opener") && doserGeneralFunctions.closeSelect();
+        !event.target.matches(".doser__select, .doser__select *, .select-opener") && doserGeneralFunctions.closeSelect();
     });
     // Select an option
     const medicines = document.querySelectorAll(".doser__select__option");
