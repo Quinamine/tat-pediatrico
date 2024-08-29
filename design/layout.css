@@ -5,6 +5,7 @@
     --hyperlink-color: #1558bc;
     --text-color: #333333;
     --footer-bg-color: #555555;
+    --heart-color: #f97171;
     --alert-color: #dd0000;
     --yt: #ffffff;
     --black: #000000;
@@ -70,6 +71,9 @@
         padding: 0;
     }
 }
+.layout-row--with-min-height {
+    min-height: 40px;
+}
 .layout-row--no-space-between-n-padding {
     justify-content: initial;
     padding: 0;
@@ -83,6 +87,7 @@
     color: var(--main-color);
     font-size: 18px;
     font-weight: 700;
+    text-transform: uppercase;
 }
 .meatballs-menu {
     width: 36px;
@@ -357,7 +362,7 @@
     display: flex;
     padding: 10px 15px 120px;
     position: absolute;
-    top: 40px;
+    top: 44px;
     left: 0;
     z-index: 10;
     width: 100%;
@@ -546,12 +551,23 @@
     margin-bottom: 20px;
     line-height: 1.5;
 }
+.article__p--margin-top {
+    margin-top: 20px;
+}
 .article__p--highlight {
     padding: 15px;
     background-color: var(--gray--light);
     border-radius: 6px;
     position: relative;
     max-width: 690px;
+}
+.article__p--danger-color {
+    color: var(--alert-color);
+    background-color: var(--orange--light);
+    border: 1px solid var(--orange)
+}
+.article__p--danger-color * {
+    color: inherit;
 }
 .article li {
     margin-bottom: 15px;
@@ -639,6 +655,9 @@
     text-align: center;
     vertical-align: middle;
 }
+article .table__cell {
+    padding: 5px;
+}
 .table__cell--padding-diff {
     padding-left: 5px;
     padding-right: 5px;
@@ -648,6 +667,9 @@
 }
 .table__cell--font-weight-light {
     font-weight: normal;
+}
+.table__cell li:last-child {
+    margin-bottom: 0;
 }
 .table__footer {
     background-color: var(--orange--light);
@@ -666,7 +688,7 @@
     height: 100vh;
     position: fixed;
     right: 0;
-    top: 41.2px;
+    top: 44.2px;
     overflow-y: auto;
     scroll-behavior: smooth;
     padding: 15px 15px 100px;
@@ -728,6 +750,48 @@
 }
 .article__staging__select:hover {
     border: 1px solid var(--orange);
+}
+/* Artigo de Efeitos Adversos */
+.details__summary {
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--gray--5);
+    transition-duration: 150ms;
+    border-top: thin solid var(--gray--d);
+}
+@media screen and (min-width: 1024px) {
+    .details__summary {
+        position: sticky;
+        top: -20px;
+        background-color: var(--yt);
+        z-index: 10;
+    }
+}
+.details__summary--border-b {
+    border-bottom: thin solid var(--gray--d);
+}
+.details__summary:hover {
+    color: var(--cor-de-texto);
+    background-color: var(--gray--light);
+    cursor: pointer;
+}
+details[open] .details__summary {
+    color: var(--cor-de-texto);
+    border-bottom: none;
+}
+.article__details__title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 20px 15px;
+}
+details p {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.details__p--border-b {
+    padding-bottom: 20px;
+    border-bottom: thin solid var(--gray--d);
 }
 /* Caixas de diálogo */
 .dialog-box-default {
@@ -926,6 +990,9 @@
 }
 .footer__p--created-by a {
     color: var(--main-color);
+}
+.footer__p__heart {
+    color: var(--heart-color);
 }
 .footer__link-back-to-top {
     position: absolute;

@@ -63,7 +63,7 @@ function listenToEvents() {
                 const relatedArticle = document.querySelector(`.${option.dataset.article}`);
                 menu.openArticle(relatedArticle);
                 document.body.classList.add("--overflow-h"); // Add Overflow: hidden to the body
-                document.querySelector(".blurringDiv").classList.add("on"); // Blur bg-color
+                document.querySelector(".blurringDiv").classList.add("on"); // Blur background
             }
         });
     });
@@ -73,7 +73,12 @@ function listenToEvents() {
         btn.addEventListener("click", () => {
             menu.closeArticle(btn.parentElement);
             document.body.classList.remove("--overflow-h"); // Remove Overflow: hidden from the body
-            document.querySelector(".blurringDiv").classList.remove("on"); // Light bg-color
+            document.querySelector(".blurringDiv").classList.remove("on"); // Light background
+            // If article === article__section--efeitos-adversos
+            const details = document.getElementsByTagName("details");
+            for (const d of details) {
+                d.removeAttribute("open");
+            }
         });
     });
     // Open main-menu-tabs;
