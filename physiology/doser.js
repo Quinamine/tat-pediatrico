@@ -122,7 +122,7 @@ class Doser {
             : 5;
         } else if(this.medicine.includes("-2a-linha") && weight < 30) {
             return this.alertarMinPesoDeveSer30();
-        } else if(this.medicine === "bdq-100") {
+        } else if(this.medicine.includes("bdq-100")) {
             return this.printDoseDeBdqPeso30ouMais();
         } else if(this.medicine.includes("lzd-600")) {
             dose = weight < 36 ? 0.5 : 1;
