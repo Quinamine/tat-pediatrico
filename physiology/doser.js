@@ -55,7 +55,7 @@ class Doser {
     getNotasEprecaucoes() {
         let note;
         if(this.medicine.includes("dfc-ped") && this.weight < 4){
-            note = `<b>(1)</b> Descartar a solução de ${this.medicine.split("-ped")[0].toUpperCase()} que sobrar após a administração. <strong>(2) As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.`
+            note = `<b>(1)</b> Descartar a solução de ${this.medicine.split("-ped")[0].toUpperCase()} que sobrar após a administração. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.`
         } else if(this.medicine.includes("dfc-ped") && this.weight >= 4 && this.weight < 25) {
             note = `<b>(1)</b> Dissolver o(s) comprimido(s) de ${this.medicine.split("-ped")[0].toUpperCase()} de acordo com o peso da criança e a quantidade de água recomendada. Após a dissolução, administre todo o medicamento de imediato à criança. Se restar algum medicamento no fundo do copo, acrescente um pouco mais de água e administre. ${this.medicine.split("-ped")[0].toUpperCase()}<sup>dispersível</sup> deve sempre ser dissolvido em água. Não deve ser tomado inteiro mesmo que a criança consiga engolir. <b>(2)</b>&nbsp;Pacientes em TARV com regime contendo Dolutegravir (DTG), devem ajustar a dose de DTG (DTG 12/12 horas) durante o tempo que recebem Rifampicina (contida no ${this.medicine.split("-ped")[0].toUpperCase()}) e por mais 2 semanas. Depois passam a tomar o DTG apenas 1 vez/dia.`;
         } else if(this.medicine === "3dfc-ped" && this.weight >= 25) {
@@ -75,7 +75,7 @@ class Doser {
         } else if(this.medicine  === "2dfc-adulto" && this.weight < 25) {
             note = 'Para peso &lt; 25 kg, use <strong>2DFC pediátrico (RH) 75/50 mg Comp.</strong>'
         } else if(this.medicine === "e100" && this.weight < 4) {
-            note = '<b>(1)</b> Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar. <strong>(2) As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.'
+            note = '<b>(1)</b> Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.'
         } else if(this.medicine === "e100" && this.weight < 25) {
             note = 'Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar.'
         } else if(this.medicine ==="e100" && this.weight >= 25) {
@@ -100,101 +100,47 @@ class Doser {
         let weight = this.weight;
         if(this.medicine.includes("dfc-ped") && weight < 4) {
             let doseEmMl, doseEmCp;
-            if(weight < 2) {
-                doseEmMl = 2.5;
-                doseEmCp = "<sup>1</sup>/<sub>4</sub>";
-            } else if(weight < 3) {
-                doseEmMl = 5;
-                doseEmCp = "<sup>1</sup>/<sub>2</sub>";
-            } else {
-                doseEmMl = 7.5;
-                doseEmCp = "<sup>3</sup>/<sub>4</sub>";
-            }
+            weight < 2 ? (doseEmMl = 2.5, doseEmCp = "<sup>1</sup>/<sub>4</sub>")
+            : weight < 3 ? (doseEmMl = 5, doseEmCp = "<sup>1</sup>/<sub>2</sub>")
+            : (doseEmMl = 7.5, doseEmCp = "<sup>3</sup>/<sub>4</sub>");
             return this.printDoseDispersivelSePesoMenorQ4kg(doseEmMl, doseEmCp);
         } else if(this.medicine === "e100" && weight < 4) {
             weight < 2 ? dose = 0.25
             : weight < 3 ? dose = 0.5 
             : dose = 0.75;
         } else if(this.medicine.includes("dfc-ped") || this.medicine === "e100") {
-            if(weight < 8 && weight >= 4) {
-                dose = 1;
-            } else if(weight < 12) {
-                dose = 2;
-            } else if(weight < 16) {
-                dose = 3;
-            } else if(weight < 25) {
-                dose = 4;
-            } else {
-                return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
-            }
+            dose = weight < 8 && weight >= 4 ? 1
+            : weight < 12 ? 2
+            : weight < 16 ? 3
+            : 4;
+            if(weight >= 25) return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
         } else if(this.medicine.includes("dfc-adulto")) {
-            if(weight < 25) {
-                return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
-            } else if(weight < 40) {
-                dose = 2;
-            } else if(weight < 55) {
-                dose = 3;
-            } else if(weight < 71) {
-                dose = 4;
-            } else {
-                dose = 5;
-            } 
+            if(weight < 25) return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
+            dose = weight < 40 ? 2
+            : weight < 55 ? 3
+            : weight < 71 ? 4
+            : 5;
+        } else if(this.medicine.includes("-2a-linha") && weight < 30) {
+            return this.alertarMinPesoDeveSer30();
         } else if(this.medicine === "bdq-100") {
-            if(weight < 30) {
-                return this.alertarMinPesoDeveSer30();
-            } else {
-                return this.printDoseDeBdqPeso30ouMais();
-            }
-        } else if(this.medicine === "lzd-600") {
-            if(weight < 30) {
-                return this.alertarMinPesoDeveSer30();
-            } else if(weight < 36) {
-                dose = 0.5;   
-            } else {
-                dose = 1;
-            }
-        } else if(this.medicine === "lfx-250") {
-            if(weight < 30) {
-                return this.alertarMinPesoDeveSer30();
-            } else if(weight < 46) {
-                dose = 3;   
-            } else {
-                dose = 4;
-            }
-        } else if(this.medicine === "cfz-100") {
-            if(weight < 30) {
-                return this.alertarMinPesoDeveSer30();
-            } else {
-                dose = 1;
-            }
-        } else if(this.medicine === "cs-250") {
-            if(weight < 30) {
-                return this.alertarMinPesoDeveSer30();
-            } else if(weight < 56) {
-                dose = 2;   
-            } else {
-                dose = 3;
-            }
+            return this.printDoseDeBdqPeso30ouMais();
+        } else if(this.medicine.includes("lzd-600")) {
+            dose = weight < 36 ? 0.5 : 1;
+        } else if(this.medicine.includes("lfx-250")) {
+            dose = weight < 46 ? 3 : 4;
+        } else if(this.medicine.includes("cfz-100")) {
+            weight >= 30 && (dose = 1);
+        } else if(this.medicine.includes("cs-250")) {
+            dose = weight < 56 ? 2 : 3;
         } else if(this.medicine === "piridoxina-25mg") {
-            if(weight < 5) {
-                dose = 0.5;
-                posologia = " 3 vezes/semana";
-            } else if(weight < 8) {
-                dose = 0.5
-            } else if(weight < 15) {
-                dose = 1;
-            } else {
-                dose = 2;
-            }
+            weight < 5 ? (dose = 0.5, posologia = " 3 vezes/semana")
+            : dose = weight < 8 ? 0.5
+            : weight < 15 ? 1
+            : 2;
         } else if(this.medicine === "piridoxina-50mg") {
-            if(weight < 5) {
-                return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
-            } else if(weight < 15) {
-                dose = 0.5; // 3 vezes por semana
-                posologia = " 3 vezes/semana";  
-            } else {
-                dose = 1;
-            }
+            if(weight < 5) return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
+            weight < 15 ? (dose = 0.5, posologia = " 3 vezes/semana")
+            : dose = 1;
         }
         return this.printDoseEmCp(dose, posologia);
     }

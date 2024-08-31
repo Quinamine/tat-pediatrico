@@ -12,7 +12,7 @@
         <meta content="https://quinamine.github.io/tat-pediatrico/index.html" property="og:url">
         <meta content="TAT PEDIÁTRICO" property="og:title">
         <meta content='Doseia automaticamente fármacos anti-tuberculose e piridoxina de acordo com o peso inserido pelo usuário. Tem como referência o guião de Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019 que, até a data de publicação do TAT (11/08/2024), ainda estava em vigor no Serviço Nacional de Saúde em Moçambique.' property="og:description">
-        <meta content="https://quinamine.github.io/tat-pediatrico/images/tat-pediatrico.jpg" property="og:image">
+        <meta content="https://quinamine.github.io/tat-pediatrico/images/tat-pediatrico.png" property="og:image">
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
         <link href="design/reset.css" rel="stylesheet">
         <link href="design/layout.css" rel="stylesheet">
@@ -72,7 +72,7 @@
                 <div class="doser__section doser__section--medicines">
                     <label class="doser__label doser__label--medicine select-opener" for="select">Fármaco:</label>
                     <ul class="doser__select" id="select">
-                        <li class="doser__select__option doser__select__option--placeholder --selected"><span class="hide-on-desktop">Toque</span><span class="hide-on-mobile">Clique</span> aqui para selecionar</li>
+                        <li class="doser__select__option doser__select__option--placeholder --selected"><span class="--hide-on-desktop">Toque</span><span class="--hide-on-mobile">Clique</span> aqui para selecionar</li>
                         <div class="doser__select__optgroup doser__select__optgroup--mat-1">
                             <h3 class="doser__optgroup__title">Fase intensiva (2 meses)</h3>
                             <li class="doser__select__option" data-nameofthemedicine="3dfc-ped">3DFC (RHZ) 75/50/150 mg Comp.<sup>dispersível</sup></li>
@@ -85,11 +85,11 @@
                         <div class="doser__select__optgroup doser__select__optgroup--mat-2 --display-none">
                             <h3 class="doser__optgroup__title">REGIME PADRONIZADO PARA TB-MR PARA CRIANÇAS &ge; 30 Kg COM MEDICAMENTOS ORAIS</h3>
                             <h4 class="doser__optgroup__title">Fase intensiva (4 a 6 meses)</h4>
-                            <li class="doser__select__option" data-nameofthemedicine="bdq-100">Bedaquilina (Bdq) 100 mg Comp.</li>
-                            <li class="doser__select__option" data-nameofthemedicine="lzd-600">Linezolide (Lzd) 600 mg Comp.</li>
-                            <li class="doser__select__option" data-nameofthemedicine="lfx-250">Levofloxacina (Lfx) 250 mg Comp.</li>
-                            <li class="doser__select__option" data-nameofthemedicine="cfz-100">Clofazimina (Cfz) 100 mg Cápsulas</li>
-                            <li class="doser__select__option" data-nameofthemedicine="cs-250">Cicloserina (Cs) 250 mg Cápsulas</li>
+                            <li class="doser__select__option" data-nameofthemedicine="bdq-100-2a-linha">Bedaquilina (Bdq) 100 mg Comp.</li>
+                            <li class="doser__select__option" data-nameofthemedicine="lzd-600-2a-linha">Linezolide (Lzd) 600 mg Comp.</li>
+                            <li class="doser__select__option" data-nameofthemedicine="lfx-250-2a-linha">Levofloxacina (Lfx) 250 mg Comp.</li>
+                            <li class="doser__select__option" data-nameofthemedicine="cfz-100-2a-linha">Clofazimina (Cfz) 100 mg Cápsulas</li>
+                            <li class="doser__select__option" data-nameofthemedicine="cs-250-2a-linha">Cicloserina (Cs) 250 mg Cápsulas</li>
                             <h4 class="doser__optgroup__title">Fase de manutenção (14 meses)</h4>
                             <li class="doser__select__option doser__select__option--os-mesmos-da-fase-i" data-isnotamedicine="sure">Os mesmos da fase intensiva, excepto Linezolide.</li>
                         </div>
@@ -119,7 +119,7 @@
             <article class="article">
                 <section class="article__section article__section--main --open">
                     <h2 class="article__title article__title--level-1">Visão geral sobre o TAT Pediátrico</h2>
-                    <p class="article__p">O <b>TAT Pediátrico</b> é um serviço online gratuito que, de acordo com o peso inserido pelo usuário, doseia automaticamente medicamentos anti-tuberculose (MAT) e Piridoxina. Tem como referência o guião de <a href="sources/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf"="Guião_Normas_clínicas_PNCT_Dez19">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data de publicação do TAT (<time datetime="2024-08-11">11/08/2024</time>), ainda estava em vigor no Serviço Nacional de Saúde (SNS) em Moçambique.</p>
+                    <p class="article__p">O <b>TAT Pediátrico</b> é um serviço online gratuito que, de acordo com o peso inserido pelo usuário, doseia automaticamente medicamentos anti-tuberculose (MAT) e Piridoxina. Tem como referência o guião de <a href="sources/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data de publicação do TAT (<time datetime="2024-08-11">11/08/2024</time>), ainda estava em vigor no Serviço Nacional de Saúde (SNS) em Moçambique.</p>
                     <p class="article__p">O TAT Pediátrico é composto por 3 abas principais, respectivamente:</p>
                     <ul class="article__list article__list--ol">
                         <li>Doseador de MAT da 1ª linha;</li>
@@ -132,7 +132,7 @@
                     <p class="article__p">O Doseador está basicamente estruturado da seguinte forma:</p>
                     <ul class="article__list article__list--ul">
                         <li> Um campo com o rótulo <b>Peso</b>, para inserir o peso em quilograma(s) da criança para a qual você pretende calcular a dose;</li>
-                        <li><b>Fármaco</b>, campo de seleção com os fármacos anti-TB da 1ª linha, 2ª linha ou Piridoxina. <span class="hide-on-mobile">Clique</span><span class="hide-on-desktop">Toque</span> no campo para abrir a lista e em seguida, selecione o fármaco do qual pretende calcular a dose.</li>
+                        <li><b>Fármaco</b>, campo de seleção com os fármacos anti-TB da 1ª linha, 2ª linha ou Piridoxina. <span class="--hide-on-mobile">Clique</span><span class="--hide-on-desktop">Toque</span> no campo para abrir a lista e em seguida, selecione o fármaco do qual pretende calcular a dose.</li>
                         <li><b>Dose, Posologia e Quantidade:</b> secção de saída em que são automaticamente mostradas, numa mini-tabela, a dose, posologia e quantidade de comprimidos a dispensar (para 14 e 28 dias) do fármaco selecionado de acordo com o peso inserido;</li>
                         <li><b>Notas e Precauções:</b> secção de saída em que são mostradas recomendações, interações medicamentosas, entre outras informações pertinentes acerca do fármaco selecionado.</li>
                     </ul>
@@ -767,8 +767,7 @@
                 </div>
             </div>
         </section>
-            </div>
-        <footer class="footer --no-print">
+        <footer class="footer">
             <div class="layout-row layout-row--flex-direction-col">
                 <div class="footer__bibliography-sources">
                     <h5 class="footer__bibliography-sources__title">Referências:</h5>
