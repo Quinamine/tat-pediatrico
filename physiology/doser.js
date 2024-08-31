@@ -80,13 +80,11 @@ class Doser {
             note = 'Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar.'
         } else if(this.medicine ==="e100" && this.weight >= 25) {
             note = 'O <b>Etambutol 100 mg Comp.</b> está indicado para crianças com peso &lt; 25 kg.'
-        } else if(this.medicine ==="bdq-100" && this.weight >= 30) {
+        } else if(this.medicine.includes("bdq-100") && this.weight >= 30) {
             note = '<b>(1)</b> *Dose de indução durante as 2 primeiras semanas. <b>(2)</b> Bedaquilina e Inibidores da protease (ATV/r, LPV/r): evitar combinação sempre que possível. IPs aumentam os níveis de Bedaquilina, com risco aumentado de toxicidade cardíaca e hepática. <strong>Em resumo, em pacientes em tratamento com o regime padrão para TB-MR, é preferível a combinação de TAT com um esquema de TARV contendo Dolutegravir.</strong>'
-        } else if(this.medicine ==="lzd-600" && this.weight >= 30) {
+        } else if(this.medicine.includes("lzd-600") && this.weight >= 30) {
             note = '<b>(1)</b> No regime padronizado, Linezolide é administrado apenas durante a fase intensiva. <b>(2)</b> AZT e Linezolide: evitar essa combinação pelo risco de mielotoxicidade (anemia, neutropenia, trombocitopenia).'
-        } else if(this.medicine ==="cs-250" && this.weight >= 30) {
-            note = 'Se intolerância, dividir a dose em 2 tomas diárias.'
-        } else if(this.medicine ==="cs-250" && this.weight >= 30) {
+        } else if(this.medicine.includes("cs-250") && this.weight >= 30) {
             note = 'Se intolerância, dividir a dose em 2 tomas diárias.'
         } else if(this.medicine ==="piridoxina-50mg" && this.weight < 5) {
             note = 'Para peso &lt; 5 kg, use <strong>Piridoxina 25 mg Comp.</strong>'
