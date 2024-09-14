@@ -8,7 +8,7 @@ O TAT Pediátrico é composto por 3 abas principais, respectivamente:
 2. Doseador de MAT da 2ª linha;
 3. Doseador de Piridoxina.
 
-![Ilustração do mapa do TAT Pediátrico.](images/mapa-do-tat-pediatrico.jpg)
+![Ilustração do mapa do TAT Pediátrico.](images/mapa-do-tat-pediatrico.png)
 
 O Doseador está basicamente estruturado da seguinte forma:
 

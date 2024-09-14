@@ -8,19 +8,20 @@ const doserGeneralFunctions = {
     },
     openOrCloseSelect() {
         const doserSelect = document.querySelector(".doser__select");
-        doserSelect.classList.toggle("--open");
         const selectOfMedicines = document.querySelector(".doser__section--medicines");
-        doserGeneralFunctions.highlightFocusedInput(selectOfMedicines);
         const body = document.querySelector("#body");
-        body.classList.toggle("--overflow-hide-on-mobile");
+        doserSelect.classList.toggle("--open");
+        doserGeneralFunctions.highlightFocusedInput(selectOfMedicines);
+        body.classList.toggle("--overflow-hidden-on-mobile");
     },
     closeSelect() {
         const doserSelect = document.querySelector(".doser__select");
-        doserSelect.classList.remove("--open");
         const selectOfMedicines = document.querySelector(".doser__section--medicines");
-        doserGeneralFunctions.removehighlightFromFocusedInput(selectOfMedicines);
         const body = document.querySelector("#body");
-        body.classList.remove("--overflow-hide-on-mobile");
+        doserSelect.classList.remove("--open");
+        doserGeneralFunctions.removehighlightFromFocusedInput(selectOfMedicines);
+        body.classList.remove("--overflow-hidden-on-mobile");
+        body.classList.remove("--overflow-hidden-on-mobile");
     },
     selectAnOption(optionToSelect) {
         const options = document.querySelectorAll(".doser__select__option");
