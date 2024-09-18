@@ -89,7 +89,7 @@ function listenToEvents() {
     // Share
     let data = {
         title: "TAT Pediátrico",
-        text: "O TAT Pediátrico doseia automaticamente fármacos anti-tuberculose e piridoxina de acordo com o peso inserido pelo usuário. Tem como referência o guião de Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019 que, até a data de publicação do TAT (11/08/2024), ainda estava em vigor no Serviço Nacional de Saúde em Moçambique.",
+        text: "O TAT Pediátrico doseia automaticamente fármacos anti-tuberculose e piridoxina de acordo com o peso inserido pelo usuário. Tem como referência o guião de Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019 que, até a altura da publicação do TAT (Agosto/2024), ainda estava em vigor no Serviço Nacional de Saúde em Moçambique.",
         url: "https://quinamine.github.io/tat-pediatrico/index.html"
     }
     let btnShare = document.querySelector(".meatballs-menu-expanded__option--share");

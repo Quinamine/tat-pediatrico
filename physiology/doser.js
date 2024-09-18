@@ -65,11 +65,11 @@ class Doser {
             note = 'Para peso &ge; 25 kg, use <strong>2DFC adulto (RH) 150/75 mg Comp.</strong>'
         } else if(this.medicine.includes("dfc-adulto") && this.weight >= 25) {
             note = `A Rifampicina (incluída no ${this.medicine.split("-adulto")[0].toUpperCase()}) reduz os níveis dos inibidores de protease (IPs) (LPV/r, ATV/r) e da Nevirapina.
-            <br> • &nbsp; NVP e Rifampicina: Associação não recomendada;  
-            <br> • &nbsp; ATV/r e Rifampicina: Associação não recomendada; 
-            <br> • &nbsp; LPV/r e Rifampicina: ajustar a dose de LPV/r (<a href="https://quinamine.github.io/tarv-pediatrico/index.html">Acessar Doseador de ARVs</a> para dosagem do LPV/r e RTV isolado para potenciação (superboosting) durante o TAT). 
-            <br> • &nbsp; Os pacientes em TARV com ATV/r ou LPV/r devem substituir o Inibidor da protease por DTG. 
-            <br> • &nbsp; A dose de DTG deve ser ajustada durante o tempo que o paciente recebe tratamento com Rifampicina e por mais 2 semanas. O ajuste deste medicamento é feito da seguinte forma: duplicar a dose diária de DTG (DTG 12/12 horas, até o fim do tratamento de TB e por mais 2 semanas). 
+            <br>• &nbsp; NVP e Rifampicina: Associação não recomendada;  
+            <br>• &nbsp; ATV/r e Rifampicina: Associação não recomendada; 
+            <br>• &nbsp; LPV/r e Rifampicina: ajustar a dose de LPV/r (<a href="https://quinamine.github.io/tarv-pediatrico/index.html">Acessar Doseador de ARVs</a> para dosagem do LPV/r e RTV isolado para potenciação (superboosting) durante o TAT). 
+            <br>• &nbsp; Os pacientes em TARV com ATV/r ou LPV/r devem substituir o Inibidor da protease por DTG. 
+            <br>• &nbsp; A dose de DTG deve ser ajustada durante o tempo que o paciente recebe tratamento com Rifampicina e por mais 2 semanas. O ajuste deste medicamento é feito da seguinte forma: duplicar a dose diária de DTG (DTG 12/12 horas, até o fim do tratamento de TB e por mais 2 semanas). 
             <br><strong>Todos os pacientes que iniciam DTG no sector de PNCT, mantêm este tratamento após terem alta do sector.</strong>`
         } else if(this.medicine  === "4dfc-adulto" && this.weight < 25) {
             note = 'Para peso &lt; 25 kg, use <strong>3DFC (RHZ) 75/50/150 mg Comp.</strong> e <strong>Etambutol 100 mg Comp.</strong>'
@@ -161,8 +161,8 @@ class Doser {
                     <td class="table__cell" colspan="2">${this.converterDoseDecimalEmFracao(dose)} cp(s)${posologia}</td> 
                 </tr>
                 <tr class="table__header table__header--bg-color-grayscale --border-t">
-                    <td class="table__cell">Dispensa para <br> 14 dias</td> 
-                    <td class="table__cell">Dispensa para <br> 28 dias</td>
+                    <td class="table__cell">Dispensa para <br>14 dias</td> 
+                    <td class="table__cell">Dispensa para <br>28 dias</td>
                 </tr>
                 <tr class="--border-b --border-t">
                     <td class="table__cell">${this.calcularDispensaPara2semanas(dose, numeroDetomasPorSemana)} cp(s)</td> 
@@ -185,8 +185,8 @@ class Doser {
                     <td class="table__cell">${qtdDeAguaParaDiluicao} ml</td>
                 </tr>
                 <tr class="table__header table__header--bg-color-grayscale --border-t">
-                    <td class="table__cell">Dispensa para <br> 14 dias</td> 
-                    <td class="table__cell">Dispensa para <br> 28 dias</td>
+                    <td class="table__cell">Dispensa para <br>14 dias</td> 
+                    <td class="table__cell">Dispensa para <br>28 dias</td>
                 </tr>
                 <tr class="--border-b --border-t">
                     <td class="table__cell">${this.calcularDispensaPara2semanas(dose, 7)} cp(s)</td> 
@@ -209,8 +209,8 @@ class Doser {
                     <td class="table__cell"> ${doseEmMl} ml da diluição - correspondente a ${doseEmCp} do comprimido </td>
                 </tr>
                 <tr class="table__header table__header--bg-color-grayscale --border-t">
-                    <td class="table__cell">Dispensa para <br> 14 dias</td> 
-                    <td class="table__cell">Dispensa para <br> 28 dias</td>
+                    <td class="table__cell">Dispensa para <br>14 dias</td> 
+                    <td class="table__cell">Dispensa para <br>28 dias</td>
                 </tr>
                 <tr class="--border-b --border-t">
                     <td class="table__cell">14 cp(s)</td> 
