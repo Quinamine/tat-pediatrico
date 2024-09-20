@@ -58,7 +58,7 @@ class Doser {
         if(this.medicine.includes("dfc-ped") && this.weight < 4){
             note = `<b>(1)</b> Descartar a solução de ${this.medicine.split("-ped")[0].toUpperCase()} que sobrar após a administração. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.`
         } else if(this.medicine.includes("dfc-ped") && this.weight >= 4 && this.weight < 25) {
-            note = `<b>(1)</b> Dissolver o(s) comprimido(s) de ${this.medicine.split("-ped")[0].toUpperCase()} de acordo com o peso da criança e a quantidade de água recomendada. Após a dissolução, administre todo o medicamento de imediato à criança. Se restar algum medicamento no fundo do copo, acrescente um pouco mais de água e administre. ${this.medicine.split("-ped")[0].toUpperCase()}<sup>dispersível</sup> deve sempre ser dissolvido em água. Não deve ser tomado inteiro mesmo que a criança consiga engolir. <b>(2)</b>&nbsp;Pacientes em TARV com regime contendo Dolutegravir (DTG), devem ajustar a dose de DTG (DTG 12/12 horas) durante o tempo que recebem Rifampicina (contida no ${this.medicine.split("-ped")[0].toUpperCase()}) e por mais 2 semanas. Depois passam a tomar o DTG apenas 1 vez/dia.`;
+            note = `<b>(1)</b> Dissolver o(s) comprimido(s) de ${this.medicine.split("-ped")[0].toUpperCase()} de acordo com o peso da criança e a quantidade de água recomendada. Após a dissolução, administre todo o medicamento de imediato à criança. Se restar algum medicamento no fundo do copo, acrescente um pouco mais de água e administre. <strong>${this.medicine.split("-ped")[0].toUpperCase()}<sup>dispersível</sup> deve sempre ser dissolvido em água. Não deve ser tomado inteiro mesmo que a criança consiga engolir.</strong> <b>(2)</b>&nbsp;Pacientes em TARV com regime contendo Dolutegravir (DTG), devem ajustar a dose de DTG (DTG 12/12 horas) durante o tempo que recebem Rifampicina (contida no ${this.medicine.split("-ped")[0].toUpperCase()}) e por mais 2 semanas. Depois passam a tomar o DTG apenas 1 vez/dia.`;
         } else if(this.medicine === "3dfc-ped" && this.weight >= 25) {
             note = 'Para peso &ge; 25 kg, use <strong>4DFC (RHZE) 150/75/400/275 mg Comp.</strong>'
         } else if(this.medicine === "2dfc-ped" && this.weight >= 25) {
@@ -252,7 +252,7 @@ class Doser {
         return dose * numeroDetomasPorSemana * 4; // Em que 4 corresponde as semanas de dispensa;
     }
     alertarMinPesoDeveSer30() {
-        return '<p class="doser__section__note">O Doseador de MAT da 2ª linha não prevê dosagem para crianças com peso < 30 kg.</p>';
+        return '<p class="doser__section__note">O Doseador de MATs da 2ª linha não prevê dosagem para crianças com peso < 30 kg.</p>';
     }
 }
 function instantiateDoser() {

@@ -16,6 +16,12 @@ function actualizarAnoDeCopyright() {
     const currentYearOutput = document.querySelector(".footer__current-year");
     currentYearOutput.textContent = anoActual;
 }
+function fecharTopoPropaganda() {
+    const topoPropaganda = document.querySelector(".topo-propaganda");
+    const body = document.querySelector("#body");
+    topoPropaganda.classList.add("topo-propaganda--off");
+    body.classList.remove("body-com-topo-propaganda")
+}
 window.addEventListener("load", () => {
     referenciaBibliografia.mostrarAlerta();
     const btnEntendi = document.querySelector(".dialog-box-default__btn--entendi");
@@ -25,4 +31,7 @@ window.addEventListener("load", () => {
         alerta.classList.remove("--open")
     });
     actualizarAnoDeCopyright();
+    // Fechar Topo Propaganda 
+    const btnXDetopoProgaganda = document.querySelector(".topo-propaganda__btn");
+    btnXDetopoProgaganda.addEventListener("click", fecharTopoPropaganda);
 });

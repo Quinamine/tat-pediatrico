@@ -22,7 +22,8 @@
     --gray--d: #dddddd;
     --gray--e: #eeeeee;
     --blue: #0060EE;
-    --blue--light: #dce4f4;
+    --blue--light: #2573b5;
+    --blue--highlight: #dce4f4;
     --purple: rgb(116, 116, 235);
     --purple--light: #e5dfed;
     --orange: #f5d589;
@@ -138,6 +139,9 @@
 .meatballs-menu-expanded.--open {
     right: 15px;
     visibility: visible;
+}
+.body-com-topo-propaganda .meatballs-menu-expanded.--open {
+    top: 80px;
 }
 @media screen and (min-width: 1024px) {
     .meatballs-menu-expanded.--open {
@@ -370,13 +374,19 @@
     overflow-y: auto;
     background-color: var(--gray--light);
 }
+.body-com-topo-propaganda .doser__select.--open {
+    top: 100px;
+}
 @media screen and (min-width: 1024px) {
     .doser__select.--open {
-        top: 0px;
+        top: 0;
         min-height: 60vh;
         max-height: 60vh;
         padding: 10px 8px;
         box-shadow: 0 4px 15px var(--gray--a);
+    }
+    .body-com-topo-propaganda .doser__select.--open {
+        top: 0;
     }
 }
 .doser__select__option--placeholder {
@@ -845,7 +855,7 @@ details p {
     color: var(--gray--5);
 }
 .dialog-box-default__btn:hover {
-    background-color: var(--blue--light);
+    background-color: var(--blue--highlight);
     border-color: var(--hyperlink-color);
     color: var(--cor-de-texto);
 }
@@ -1046,4 +1056,57 @@ details p {
 }
 .--display-none {
     display: none !important;
+}
+.topo-propaganda {
+    position: sticky;
+    top: 0;
+    z-index: 100000;
+    background-color: var(--blue--highlight);
+}
+@media screen and (max-width: 1023px) {
+    .topo-propaganda {
+        border-bottom: thin solid var(--blue--light);
+    }
+}
+.topo-propaganda--off {
+    display: none;
+}
+.topo-propaganda__row {
+    position: relative;
+}
+@media screen and (min-width: 1024px) {
+    .topo-propaganda__row {
+        max-width: calc(var(--layout-width) + 38px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+.topo-propaganda__link {
+    display: block;
+    font-size: 12px;
+    line-height: 1.3;
+    padding: 10px 48px 10px;
+    font-weight: 700;
+    position: relative;
+}
+.topo-propaganda__link::before {
+    content: "i";
+    font-size: 11px;
+    padding: 1px 7px;
+    border-radius: 50%;
+    border: 1px solid var(--purple);
+    background-color: var(--blue--light);
+    color: var(--yt);
+    position: absolute;
+    left: 15px;
+    top: calc(50% - 19px / 2);
+}
+.topo-propaganda__btn {
+    background-color: var(--blue--light);
+    color: var(--yt);
+    font-size: 15px;
+    border-radius: 50%;
+    position: absolute;
+    right: 15px;
+    top: calc(50% - 19px / 2);
 }
