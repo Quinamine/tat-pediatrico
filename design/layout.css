@@ -706,6 +706,16 @@ article .table__cell {
     z-index: 9999;
     display: none;
 }
+@media screen and (max-width: 509px) {
+    .body-com-topo-propaganda .article__section--fixed {
+        top: calc(48.2px + 51.19px);
+    }
+}
+@media screen and (min-width: 510px) and (max-width: 1023px) {
+    .body-com-topo-propaganda .article__section--fixed {
+        top: calc(48.2px + 35.59px);
+    }
+}
 @media screen and (min-width: 1024px) {
     .article__section--fixed {
         max-width: 700px;
@@ -727,6 +737,16 @@ article .table__cell {
     z-index: 1000;
     background-color: var(--black--a-5);
     color: var(--yt);
+}
+@media screen and (max-width: 509px) {
+    .body-com-topo-propaganda .article__section__btn--close {
+        top: 51.19px;
+    }
+}
+@media screen and (min-width: 510px) and (max-width: 1023px) {
+    .body-com-topo-propaganda .article__section__btn--close {
+        top: 35.59px;
+    }
 }
 @media screen and (min-width: 1024px) {
     .article__section__btn--close {
