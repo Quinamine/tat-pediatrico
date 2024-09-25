@@ -376,6 +376,7 @@
 }
 .body-com-topo-propaganda .doser__select.--open {
     top: 105px;
+    padding-bottom: 180px;
 }
 @media screen and (min-width: 1024px) {
     .doser__select.--open {
@@ -387,6 +388,7 @@
     }
     .body-com-topo-propaganda .doser__select.--open {
         top: 0;
+        padding-bottom: 10px;
     }
 }
 .doser__select__option--placeholder {
