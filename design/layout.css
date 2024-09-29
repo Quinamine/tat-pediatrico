@@ -120,6 +120,7 @@
     margin: 1.5px 0;
     background-color: var(--yt);
     border-radius: 8px;
+    cursor: pointer;
 }
 .meatballs-menu-expanded {
     width: 90vw;
@@ -711,11 +712,12 @@ article .table__cell {
 @media screen and (max-width: 409px) {
     .body-com-topo-propaganda .article__section--fixed {
         top: calc(48.2px + 53.59px);
+        padding-bottom: calc(100px + 53.59px);
     }
-}
 @media screen and (min-width: 410px) and (max-width: 1023px) {
     .body-com-topo-propaganda .article__section--fixed {
         top: calc(48.2px + 38px);
+        padding-bottom: calc(100px + 38px);
     }
 }
 @media screen and (min-width: 1024px) {
@@ -817,9 +819,12 @@ details[open] .details__summary {
     font-weight: 700;
     margin: 20px 15px;
 }
+details .artigo__titulo,
+details p {
+    margin-left: 15px;
+}
 details p {
     margin-top: 10px;
-    margin-left: 15px;
 }
 .details__p--border-b {
     padding-bottom: 20px;
