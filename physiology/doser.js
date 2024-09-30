@@ -67,7 +67,7 @@ class Doser {
             note = `A Rifampicina (incluída no ${this.medicine.split("-adulto")[0].toUpperCase()}) reduz os níveis dos inibidores de protease (IPs) (LPV/r, ATV/r) e da Nevirapina.
             <br>• &nbsp; NVP e Rifampicina: Associação não recomendada;  
             <br>• &nbsp; ATV/r e Rifampicina: Associação não recomendada; 
-            <br>• &nbsp; LPV/r e Rifampicina: ajustar a dose de LPV/r (<a href="https://quinamine.github.io/tarv-pediatrico/index.html">Acessar Doseador de ARVs</a> para dosagem do LPV/r e RTV isolado para potenciação (superboosting) durante o TAT). 
+            <br>• &nbsp; LPV/r e Rifampicina: ajustar a dose de LPV/r (<a href="https://quinamine.github.io/tarv-pediatrico/index.html">Acessar Doseador de ARVs</a> para dosagem do LPV/r e RTV isolado para potenciação/superboosting durante o TAT). 
             <br>• &nbsp; Os pacientes em TARV com ATV/r ou LPV/r devem substituir o Inibidor da protease por DTG (<strong>Nota:</strong> A decisão de trocar para o regime de resgate deve ser tomada pelo comité terapêutico e deve-se ter em consideração o histórico dos regimes de TARV prévios do paciente). 
             <br>• &nbsp; A dose de DTG deve ser ajustada durante o tempo que o paciente recebe tratamento com Rifampicina e por mais 2 semanas. O ajuste deste medicamento é feito da seguinte forma: duplicar a dose diária de DTG (DTG 12/12 horas, até o fim do tratamento de TB e por mais 2 semanas). 
             <br><strong>Todos os pacientes que iniciam DTG no sector de PNCT, mantêm este tratamento após terem alta do sector.</strong>`

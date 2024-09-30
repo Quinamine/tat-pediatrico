@@ -22,7 +22,7 @@
     --gray--d: #dddddd;
     --gray--e: #eeeeee;
     --blue: #0060EE;
-    --blue--light: #2573b5;
+    --blue--cobalt: #2573b5;
     --blue--highlight: #dce4f4;
     --purple: rgb(116, 116, 235);
     --purple--light: #e5dfed;
@@ -714,6 +714,7 @@ article .table__cell {
         top: calc(48.2px + 53.59px);
         padding-bottom: calc(100px + 53.59px);
     }
+}
 @media screen and (min-width: 410px) and (max-width: 1023px) {
     .body-com-topo-propaganda .article__section--fixed {
         top: calc(48.2px + 38px);
@@ -1092,7 +1093,7 @@ details p {
 }
 @media screen and (max-width: 1023px) {
     .topo-propaganda {
-        border-bottom: thin solid var(--blue--light);
+        border-bottom: thin solid var(--blue--cobalt);
     }
 }
 .topo-propaganda--off {
@@ -1122,7 +1123,7 @@ details p {
     padding: 1px 7px;
     border-radius: 50%;
     border: 1px solid var(--purple);
-    background-color: var(--blue--light);
+    background-color: var(--blue--cobalt);
     color: var(--yt);
     position: absolute;
     left: 15px;
@@ -1133,7 +1134,7 @@ details p {
     cursor: pointer;
 }
 .topo-propaganda__btn {
-    background-color: var(--blue--light);
+    background-color: var(--blue--cobalt);
     color: var(--yt);
     font-size: 15px;
     border-radius: 50%;
