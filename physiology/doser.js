@@ -87,8 +87,8 @@ class Doser {
             note = '<b>(1)</b> No regime padronizado, Linezolide é administrado apenas durante a fase intensiva. <b>(2)</b> AZT e Linezolide: evitar essa combinação pelo risco de mielotoxicidade (anemia, neutropenia, trombocitopenia).'
         } else if(this.medicine.includes("cs-250") && this.weight >= 30) {
             note = 'Se intolerância, dividir a dose em 2 tomas diárias.'
-        } else if(this.medicine ==="piridoxina-50mg" && this.weight < 5) {
-            note = 'Para peso &lt; 5 kg, use <strong>Piridoxina 25 mg Comp.</strong>'
+        } else if(this.medicine.includes("piridoxina")) {
+            note = "No caso de neuropatia periférica, as dosagens de piridoxina podem ser aumentadas para 2–5 mg/kg/dia. <b>Sinais e sintomas de neuropatia periférica:</b> Dor, queimação ou formigamento nas mãos ou pés, dormência ou perda de sensibilidade nos braços e pernas, cãibras ou espasmos musculares.</b>"
         }  else {
             note = "";
         }
@@ -132,14 +132,9 @@ class Doser {
         } else if(this.medicine.includes("cs-250")) {
             dose = weight < 56 ? 2 : 3;
         } else if(this.medicine === "piridoxina-25mg") {
-            weight < 5 ? (dose = 0.5, posologia = " 3 vezes/semana")
-            : dose = weight < 8 ? 0.5
-            : weight < 15 ? 1
-            : 2;
+            dose = weight < 25 ? 0.5 : 2;
         } else if(this.medicine === "piridoxina-50mg") {
-            if(weight < 5) return '<p class="doser__section__note">Ver <b>Notas e Precauções</b>.</p>';
-            weight < 15 ? (dose = 0.5, posologia = " 3 vezes/semana")
-            : dose = 1;
+            dose = weight < 25 ? 0.25 : 1;
         }
         return this.printDoseEmCp(dose, posologia);
     }
