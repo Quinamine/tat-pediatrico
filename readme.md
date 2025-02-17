@@ -1,6 +1,6 @@
 # TAT Pediátrico
 
-O **TAT Pediátrico** é um serviço online gratuito que, de acordo com o peso inserido pelo usuário, doseia automaticamente medicamentos anti-tuberculose (MAT) e Piridoxina. Tem como referência o guião de [Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019](sources/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf) que, até a altura da publicação do TAT (Agosto/2024), ainda estava em vigor no Serviço Nacional de Saúde (SNS) em Moçambique.
+O **TAT Pediátrico** é um serviço online gratuito que, de acordo com o peso inserido pelo usuário, doseia automaticamente medicamentos anti-tuberculose (MAT) e Piridoxina. Tem como referência o guião de [Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019](bibliografia/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf) que, até a altura da publicação do TAT (Agosto/2024), ainda estava em vigor no Serviço Nacional de Saúde (SNS) em Moçambique.
 
 O TAT Pediátrico é composto por 3 abas principais, respectivamente:
 
@@ -8,7 +8,7 @@ O TAT Pediátrico é composto por 3 abas principais, respectivamente:
 2. Doseador de MATs da 2ª linha;
 3. Doseador de Piridoxina.
 
-![Ilustração do mapa do TAT Pediátrico.](images/mapa-do-tat-pediatrico.png)
+![Ilustração do mapa do TAT Pediátrico.](imagens/mapa-do-tat-pediatrico.png)
 
 O Doseador está basicamente estruturado da seguinte forma:
 

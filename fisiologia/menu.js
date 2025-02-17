@@ -38,9 +38,13 @@ const menu = {
         }
         let defaultOption;
         if(currentTab.title === "Doseador de Piridoxina") {
-            defaultOption = document.querySelector(".doser__select__option--vit-b6-25mg"); 
+            defaultOption = document.querySelector(".doser__select__option--vit-b6-25mg");
+            document.querySelector(".bibliography-source--piridoxina").classList.remove("--display-none"); // Show currentTab bibliography
+            document.querySelector(".bibliography-source--mats").classList.add("--display-none");
         } else {
-            defaultOption = document.querySelector(".doser__select__option--placeholder"); 
+            defaultOption = document.querySelector(".doser__select__option--placeholder");
+            document.querySelector(".bibliography-source--piridoxina").classList.add("--display-none");
+            document.querySelector(".bibliography-source--mats").classList.remove("--display-none");
         }
         defaultOption.classList.add("--selected");
     }
