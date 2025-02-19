@@ -49,12 +49,12 @@
                     <div class="meatballs-menu-expanded">
                         <ul>
                             <li><button class="meatballs-menu-expanded__option meatballs-menu-expanded__option--border-radius-t" data-article="article__section--abreviaturas">Abreviaturas</button></li>
-                            <li><button class="meatballs-menu-expanded__option" data-article="article__section--efeitos-adversos-1">Efeitos Adversos aos MATs de 1ª Linha</button></li>
-                            <li><button class="meatballs-menu-expanded__option" data-article="article__section--efeitos-adversos-2">Efeitos Adversos aos MATs de 2ª Linha</button></li>
+                            <li><button class="meatballs-menu-expanded__option" data-article="article__section--efeitos-adversos-1">Efeitos Adversos aos MATs da 1ª Linha</button></li>
+                            <li><button class="meatballs-menu-expanded__option" data-article="article__section--efeitos-adversos-2">Efeitos Adversos aos MATs da 2ª Linha</button></li>
                             <li><button class="meatballs-menu-expanded__option" data-article="article__section--regimes-padrao-para-tbmr">Regime padronizado para TB-MR</button></li>   
                             <li> <button class="meatballs-menu-expanded__option" data-article="article__section--regimes-para-inicios-tarv">Regimes recomendados para TARV</button></li>
                             <li><button class="meatballs-menu-expanded__option" data-article="article__section--regimes-alternativos">Regimes de ARVs alternativos</button></li>
-                            <li><a href="https://quinamine.github.io/tarv-pediatrico/index.html" class="meatballs-menu-expanded__option">Doseador de ARVs</a></li>
+                            <li><a href="https://quinamine.github.io/tarv-pediatrico/index.html" class="meatballs-menu-expanded__option">Doseador de ARVs, CTZ, INH, 3HP e Lfx</a></li>
                             <li><button class="meatballs-menu-expanded__option" data-article="article__section--desnutricao">Manejo de Desnutrição Aguda</button></li>
                             <li><button class="meatballs-menu-expanded__option meatballs-menu-expanded__option--share">Partilhar TAT Pediátrico</button></li>
                             <li><a href="https://quinamine.github.io/aderito-felix-quinamine/index.html" class="meatballs-menu-expanded__option meatballs-menu-expanded__option--border-radius-b">Sobre o Desenvolvedor</a></li>
@@ -73,7 +73,7 @@
                 <h1 class="doser__title">Doseador de MATs da 1ª linha</h1>
                 <div class="doser__section doser__section--weight">
                     <label class="doser__label" for="input-weight">Peso:</label>
-                    <input type="number" max="45" min="3" placeholder="Digite aqui o peso da criança" id="input-weight" class="doser__input doser__input--weight">
+                    <input type="number" min="1" placeholder="Digite aqui o peso da criança" id="input-weight" class="doser__input doser__input--weight">
                     <label class="doser__label doser__label--kg" for="input-weight">kg</label>
                 </div>
                 <p class="doser__min-weight-alert"></p>
@@ -93,7 +93,7 @@
                         <div class="doser__select__optgroup doser__select__optgroup--mat-2 --display-none">
                             <h3 class="doser__optgroup__title">REGIME PADRONIZADO PARA TB-MR PARA CRIANÇAS &ge; 3 ANOS COM MEDICAMENTOS ORAIS</h3>
                             <h4 class="doser__optgroup__title">Fase intensiva (4 a 6 meses)</h4>
-                            <li class="doser__select__option" data-nameofthemedicine="dlm-100-2a-linha">Delamanide (Dlm) 50 mg Comp.<sup>(3 - 6 anos)</sup></li>
+                            <li class="doser__select__option" data-nameofthemedicine="dlm-50-2a-linha">Delamanide (Dlm) 50 mg Comp.<sup>(3 - 6 anos)</sup></li>
                             <li class="doser__select__option" data-nameofthemedicine="bdq-100-2a-linha">Bedaquilina (Bdq) 100 mg Comp.<sup>(> 6 anos)</sup></li>
                             <li class="doser__select__option" data-nameofthemedicine="lzd-150-2a-linha">Linezolide (Lzd) 150 mg Comp.</li>
                             <li class="doser__select__option" data-nameofthemedicine="lzd-600-2a-linha">Linezolide (Lzd) 600 mg Comp.</li>
@@ -730,7 +730,7 @@
             </article>
             <div class="dialog-box-default dialog-box-default--bibliography">
                 <h3 class="dialog-box-default__title">IMPORTANTE</h3>
-                <p class="dialog-box-default__p">O TAT Pediátrico foi desenvolvido com base em normas do guião de <a href="bibliografia/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a altura da publicação do TAT (Agosto/2024), ainda estavam em vigor no Serviço Nacional de Saúde (SNS) em Moçambique. No entanto, face as frequentes mudanças nas abordagens médicas que acompanham a evolução da Medicina, tais normas poderão ter sido actualizadas e outro instrumento de apoio, disponibilizado.</p>
+                <p class="dialog-box-default__p">O TAT Pediátrico foi criado de acordo com as normas do guião de <a href="bibliografia/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data da última actualização do TAT (Fevereiro/2025), ainda estavam em vigor no Serviço Nacional de Saúde (SNS) em Moçambique. No entanto, face as frequentes mudanças nas abordagens médicas que acompanham a evolução da Medicina, tais normas poderão ter sido actualizadas e outro instrumento de apoio, disponibilizado.</p>
                 <div class="dialog-box-default__btn-container">
                     <button class="dialog-box-default__btn dialog-box-default__btn--entendi">Entendi</button>
                 </div>
@@ -904,7 +904,7 @@
                 </div>
                 <p class="footer__p footer__p--created-by">Criado com atenção e <span class="footer__p__heart">❤</span> por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a> | ©&nbsp;<span class="footer__current-year"></span> TAT&nbsp;Pediátrico
                 </p>
-                <p class="footer__p footer__p--available-since">Disponível desde: <time datetime="2024-08-11">11/08/2024</time>.</p>
+                <p class="footer__p footer__p--available-since">Disponível desde: <time datetime="2024-08-11">11/08/2024</time>. Última actualização: Fevereiro/2025.</p>
                 <a href="#root" class="footer__link--back-to-top">Rolar para o topo</a>
             </div>
         </footer>
