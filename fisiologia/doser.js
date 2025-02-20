@@ -53,6 +53,10 @@ class Doser {
         this.weight = weight;
         this.medicine = medicine;
     }
+    getUnidadeDaDose() {
+        return this.medicine.includes("cfz") || this.medicine.includes("cs") ? "cáps." 
+        : "cp(s)";
+    }
     getNotasEprecaucoes(){
         let note;
         if(this.medicine.includes("dfc-ped") && this.weight < 4){
@@ -110,7 +114,7 @@ class Doser {
                 note = 'Se intolerância, dividir a dose em 2 tomas diárias.'
             }
             else if(this.weight < 12 || this.weight > 16 && this.weight < 25){
-                note = '<b>(1)</b> Se intolerância, dividir a dose em 2 tomas diárias. <b>(2)</b> As cápsulas de Cicloserina 250 mg devem ser abertas e o conteúdo diluído em 10 ml de agua. Deverá ser administrada a parte correspondente de solução segundo o peso.';
+                note = '<b>(1)</b> As cápsulas de Cicloserina 250 mg devem ser abertas e o conteúdo diluído em 10 ml de água. Deverá ser administrada a parte correspondente de solução segundo o peso. <b>(2)</b> Se intolerância, dividir a dose em 2 tomas diárias.';
             }
         } else if(this.medicine ==="piridoxina-50mg" && this.weight < 5){
             note = 'Para peso &lt; 5 kg, use <strong>Piridoxina 25 mg Comp.</strong>'
@@ -125,9 +129,9 @@ class Doser {
         if(this.medicine.includes("dfc-ped") && weight < 4){
             let numDeCpsPorDiluir = 1, qtdDeAgua = 10;
             let doseEmMl, doseEmCpCorrespondente, posologia = "uma vez/dia"
-            weight < 2 ? (doseEmMl = 2.5, doseEmCpCorrespondente = "<sup>1</sup>/<sub>4</sub>")
-            : weight < 3 ? (doseEmMl = 5, doseEmCpCorrespondente = "<sup>1</sup>/<sub>2</sub>")
-            : (doseEmMl = 7.5, doseEmCpCorrespondente = "<sup>3</sup>/<sub>4</sub>");
+            weight < 2 ? (doseEmMl = 2.5, doseEmCpCorrespondente = 0.25)
+            : weight < 3 ? (doseEmMl = 5, doseEmCpCorrespondente = 0.5)
+            : (doseEmMl = 7.5, doseEmCpCorrespondente = 0.75);
             return this.printDoseDeCpEmMl(numDeCpsPorDiluir, qtdDeAgua, doseEmMl, doseEmCpCorrespondente, posologia);
         } else if(this.medicine === "e100" && weight < 4){
             weight < 2 ? dose = 0.25
@@ -148,23 +152,23 @@ class Doser {
         } else if(this.medicine.includes("-2a-linha") && weight < 5){
             return this.lerNotasEprecaucoes();
         } else if(this.medicine.includes("dlm-50")){
-            if(weight < 7){
-                return this.lerNotasEprecaucoes();;
-            } else if(weight < 23){
-                dose = 0.5;
-            } else {
-                dose = 1;
-            }
+            if(weight < 7) return this.lerNotasEprecaucoes();
             dose = weight < 23 ? 0.5
             : weight < 30 ? 1
             : 2;
             posologia = " 12/12 horas";
         } else if(this.medicine.includes("bdq-100")){
+            let doseInicial, doseSeguinte;
             if(weight < 10){
-                return this.lerNotasEprecaucoes();;
+                return this.lerNotasEprecaucoes();
+            } else if(weight < 16){
+                doseInicial = "100 mg (1 comp.)", doseSeguinte = `50 mg (<${this.converterDoseDecimalEmFracao(0.5)} comp.)`;
+            } else if(weight < 30){
+                doseInicial = "200 mg (2 comp.)", doseSeguinte = "100 mg (1 comp.)";
             } else {
-                return this.printDoseDeBdqPeso30ouMais();
+                doseInicial = "400 mg (4 comp.)", doseSeguinte = "200 mg (2 comp.)";
             }
+            return this.printDoseDeBdqPeso30ouMais(doseInicial, doseSeguinte);
         } else if(this.medicine.includes("lzd-150")){
             dose = weight < 8 ? 0.5 
             : weight < 12 ? 1 
@@ -176,7 +180,7 @@ class Doser {
                 return this.lerNotasEprecaucoes();;
             } else if(weight < 16){
                 let numDeCpsPorDiluir = 0.5, qtdDeAgua = 15;
-                let doseEmMl = "7.5", doseEmCpCorrespondente = "<sup>1</sup>/<sub>4</sub>", posologia = "uma vez/dia";
+                let doseEmMl = "7.5", doseEmCpCorrespondente = 0.25, posologia = "uma vez/dia";
                 return this.printDoseDeCpEmMl(numDeCpsPorDiluir, qtdDeAgua, doseEmMl, doseEmCpCorrespondente, posologia);
             } else if(weight < 36){
                 dose = 0.5;
@@ -269,21 +273,21 @@ class Doser {
         posologia.includes("a cada 3 dias") && (numeroDetomasPorSemana = 2.5);
         return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
             <thead class="table__header table__header--bg-color-grayscale">
-                <tr class="--border-t">
+                <tr>
                     <th class="table__cell" colspan="2">Dose</th> 
                 </tr>
             </thead>
             <tbody>
-                <tr class="--border-t">
-                    <td class="table__cell" colspan="2">${this.converterDoseDecimalEmFracao(dose)} cp(s) ${posologia}</td> 
+                <tr>
+                    <td class="table__cell" colspan="2">${this.converterDoseDecimalEmFracao(dose)} ${this.getUnidadeDaDose()} ${posologia}</td> 
                 </tr>
-                <tr class="table__header table__header--bg-color-grayscale --border-t">
+                <tr class="table__header table__header--bg-color-grayscale">
                     <td class="table__cell">Dispensa para <br>14 dias</td> 
-                    <td class="table__cell">Dispensa para <br>28 dias</td>
+                    <td class="table__cell --border-l">Dispensa para <br>28 dias</td>
                 </tr>
-                <tr class="--border-b --border-t">
-                    <td class="table__cell">${this.calcularDispensaPara2semanas(dose, numeroDetomasPorSemana)} cp(s)</td> 
-                    <td class="table__cell">${this.calcularDispensaPara4semanas(dose, numeroDetomasPorSemana)} cp(s)</td>
+                <tr>
+                    <td class="table__cell">${this.calcularDispensaPara2semanas(dose, numeroDetomasPorSemana)} ${this.getUnidadeDaDose()}</td> 
+                    <td class="table__cell --border-l">${this.calcularDispensaPara4semanas(dose, numeroDetomasPorSemana)} ${this.getUnidadeDaDose()}</td>
                 </tr>                   
             </tbody>
         </table>`
@@ -291,23 +295,23 @@ class Doser {
     printDoseDispersivel(dose, qtdDeAguaParaDiluicao){
         return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
             <thead class="table__header table__header--bg-color-grayscale">
-                <tr class="--border-t">
+                <tr>
                     <th class="table__cell">Dose</th> 
-                    <th class="table__cell">Quantidade de água <br>para diluição</th>
+                    <th class="table__cell --border-l">Quantidade de água <br>para diluição</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="--border-t">
-                    <td class="table__cell">${dose} cp(s) uma vez/dia</td> 
-                    <td class="table__cell">${qtdDeAguaParaDiluicao} ml</td>
+                <tr>
+                    <td class="table__cell">${dose} ${this.getUnidadeDaDose()} uma vez/dia</td> 
+                    <td class="table__cell --border-l">${qtdDeAguaParaDiluicao} ml</td>
                 </tr>
-                <tr class="table__header table__header--bg-color-grayscale --border-t">
+                <tr class="table__header table__header--bg-color-grayscale">
                     <td class="table__cell">Dispensa para <br>14 dias</td> 
-                    <td class="table__cell">Dispensa para <br>28 dias</td>
+                    <td class="table__cell --border-l">Dispensa para <br>28 dias</td>
                 </tr>
-                <tr class="--border-b --border-t">
-                    <td class="table__cell">${this.calcularDispensaPara2semanas(dose, 7)} cp(s)</td> 
-                    <td class="table__cell">${this.calcularDispensaPara4semanas(dose, 7)} cp(s)</td>
+                <tr>
+                    <td class="table__cell">${this.calcularDispensaPara2semanas(dose, 7)} ${this.getUnidadeDaDose()}</td> 
+                    <td class="table__cell --border-l">${this.calcularDispensaPara4semanas(dose, 7)} ${this.getUnidadeDaDose()}</td>
                 </tr>                   
             </tbody>
         </table>` 
@@ -315,47 +319,43 @@ class Doser {
     printDoseDeCpEmMl(numDeCpsPorDiluir, qtdDeAgua, doseEmMl, doseEmCpCorrespondente, posologia){
         let dispensaQuinzenal = numDeCpsPorDiluir * 14;
         let dispensaMensal = numDeCpsPorDiluir * 28;
+        let preposicaoDoOuDa = this.medicine.includes("cfz") || this.medicine.includes("cs") ? "da" 
+            : "do";
         return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
             <thead class="table__header table__header--bg-color-grayscale">
-                <tr class="--border-t">
+                <tr>
                     <th class="table__cell">Diluir</th> 
-                    <th class="table__cell">Administrar</th>
+                    <th class="table__cell --border-l">Administrar</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="--border-t">
-                    <td class="table__cell">${numDeCpsPorDiluir} cp(s) em ${qtdDeAgua} ml de água</td> 
-                    <td class="table__cell">${doseEmMl} ml da diluição - correspondente a ${doseEmCpCorrespondente} do cp(s) ${posologia}.</td>
+                <tr>
+                    <td class="table__cell">${this.converterDoseDecimalEmFracao(numDeCpsPorDiluir)} ${this.getUnidadeDaDose()} em ${qtdDeAgua} ml de água</td> 
+                    <td class="table__cell --border-l">${doseEmMl} ml da diluição - correspondente a ${this.converterDoseDecimalEmFracao(doseEmCpCorrespondente)} ${preposicaoDoOuDa} ${this.getUnidadeDaDose()} ${posologia}</td>
                 </tr>
-                <tr class="table__header table__header--bg-color-grayscale --border-t">
+                <tr class="table__header table__header--bg-color-grayscale">
                     <td class="table__cell">Dispensa para <br>14 dias</td> 
-                    <td class="table__cell">Dispensa para <br>28 dias</td>
+                    <td class="table__cell --border-l">Dispensa para <br>28 dias</td>
                 </tr>
-                <tr class="--border-b --border-t">
-                    <td class="table__cell">${dispensaQuinzenal} cp(s)</td> 
-                    <td class="table__cell">${dispensaMensal} cp(s)</td>
+                <tr>
+                    <td class="table__cell">${dispensaQuinzenal} ${this.getUnidadeDaDose()}</td> 
+                    <td class="table__cell --border-l">${dispensaMensal} ${this.getUnidadeDaDose()}</td>
                 </tr>                   
             </tbody>
         </table>` 
     }
-    printDoseDeBdqPeso30ouMais(){
-        let doseInicial = "400 mg (4 cps)", doseSeguinte = "200 mg (2 cps)";
-        if(this.medicine.includes("bdq-100") && this.weight < 16){
-            doseInicial = "1 cp(s)", doseSeguinte = "0.5 cp(s)";
-        } else if(this.medicine.includes("bdq-100") && this.weight < 30){
-            doseInicial = "2 cp(s)", doseSeguinte = "1 cp(s)";
-        }
+    printDoseDeBdqPeso30ouMais(doseInicial, doseSeguinte){
         return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
             <thead class="table__header table__header--bg-color-grayscale">
-                <tr class="--border-t">
+                <tr>
                     <th class="table__cell">Dose inicial</th> 
-                    <th class="table__cell">Após 14 dias</th>
+                    <th class="table__cell --border-l">Após 14 dias</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="--border-t">
+                <tr>
                     <td class="table__cell">${doseInicial}* uma vez/dia por 14 dias</td> 
-                    <td class="table__cell">Diminuir para ${doseSeguinte}/dia nas Segundas, Quartas e Sextas feiras</td>
+                    <td class="table__cell --border-l">Diminuir para ${doseSeguinte} nas Segundas, Quartas e Sextas feiras</td>
                 </tr>                
             </tbody>
         </table>` 
@@ -392,8 +392,8 @@ function instantiateDoser(){
             }
         }
         // Se não for option de placeholder
-        if(selectedMedicine.dataset.nameofthemedicine){
-            selectedMedicine = selectedMedicine.dataset.nameofthemedicine;
+        if(selectedMedicine.dataset.farmaco){
+            selectedMedicine = selectedMedicine.dataset.farmaco;
             let doserObject = new Doser(weight, selectedMedicine);
             let doseOutput = document.querySelector(".doser__section__dose");
             let noteOutput = document.querySelector(".doser__section__note");

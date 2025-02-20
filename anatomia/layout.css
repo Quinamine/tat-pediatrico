@@ -625,7 +625,7 @@
     table-layout: fixed;
 } 
 .table--grayscale {
-    border: none;
+    border-color: var(--gray--c);
     width: initial;
     background-color: var(--gray--light);
     min-width: 290px;
@@ -661,7 +661,9 @@
         top: -20px;
     }
 }
-.table--grayscale tr {
+.table--grayscale td,
+.table__header--bg-color-grayscale th,
+.table__header--bg-color-grayscale td {
     border-color: var(--gray--c);
 }
 .table__cell {
@@ -770,7 +772,6 @@ article .table__cell {
 }
 .article__section__table-of-contents {
     text-align: left;
-    border-bottom: 1px solid transparent;
     margin-bottom: 40px;
 }
 .article__table-of-contents__link {
