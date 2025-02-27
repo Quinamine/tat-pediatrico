@@ -162,7 +162,7 @@ class Doser {
             if(weight < 10){
                 return this.lerNotasEprecaucoes();
             } else if(weight < 16){
-                doseInicial = "100 mg (1 comp.)", doseSeguinte = `50 mg (<${this.converterDoseDecimalEmFracao(0.5)} comp.)`;
+                doseInicial = "100 mg (1 comp.)", doseSeguinte = `50 mg (${this.converterDoseDecimalEmFracao(0.5)} comp.)`;
             } else if(weight < 30){
                 doseInicial = "200 mg (2 comp.)", doseSeguinte = "100 mg (1 comp.)";
             } else {

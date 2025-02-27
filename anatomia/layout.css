@@ -380,6 +380,11 @@
     top: 105px;
     padding-bottom: 180px;
 }
+@media screen and (min-width: 475px) {
+    .body-com-topo-propaganda .doser__select.--open {
+        top: 86px;
+    }
+}
 @media screen and (min-width: 1024px) {
     .doser__select.--open {
         top: 0;
