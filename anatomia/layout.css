@@ -340,7 +340,7 @@
     align-self: flex-start;
     width: 100%;
     padding: 10px;
-    background: var(--gray--light);
+    background-color: var(--gray--light);
     line-height: 1.5;
 }
 .doser__section__note--no-padding {
@@ -838,14 +838,13 @@ details p {
     padding-bottom: 20px;
     border-bottom: thin solid var(--gray--d);
 }
-/* Caixas de diálogo */
 .dialog-box-default {
     width: 100%;
     max-width: var(--layout-width);
     font-size: 13.5px;
     line-height: 1.5;
     border: 1px solid var(--gray);
-    background: var(--gray--light);
+    background-color: var(--gray--light);
     box-shadow: 0 2px 8px var(--gray--5);
     position: fixed;
     right: calc(50vw - (var(--layout-width) + 15px) / 2);
@@ -871,7 +870,7 @@ details p {
     font-weight: 700;
 }
 .dialog-box-default__btn-container {
-    background: var(--gray--light);
+    background-color: var(--gray--light);
     padding: 8px;
     border-top: 1px solid var(--gray--d)
 }
@@ -880,19 +879,23 @@ details p {
     min-height: 60px;
 }
 .dialog-box-default__btn {
+    --gray--light:#e1e1e1;
+    --gray--a:#adadad;
     min-width: 130px;
     margin: auto;
     padding: 5px;
-    border: 1px solid var(--gray--c);
-    font-size: 13.5px;
+    background-color: var(--gray--light);
+    border: 1px solid var(--gray--a);
+    font-size: 13px;
     display: block;
     transition-duration: .4s;
-    color: var(--gray--5);
+    color: var(--cor-de-texto);
 }
 .dialog-box-default__btn:hover {
-    background-color: var(--blue--highlight);
-    border-color: var(--hyperlink-color);
-    color: var(--cor-de-texto);
+    --cor-de-realce:#e5f1fb;
+    --cor-de-link: #1558bc;
+    background-color: var(--cor-de-realce);
+    border-color: var(--cor-de-link);
 }
 /* PROPAGANDA */
 .advertising {
@@ -961,18 +964,22 @@ details p {
     display: grid;
     grid-template-rows: 52px 1fr 32px;
 }
+.advertising__card__title,
+.advertising__card__description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .advertising__card__title {
+    -webkit-line-clamp: 2;
     font-weight: 700;
     font-size: 17px;
 }
 .advertising__card__description {
     margin: 18px 0;
     line-height: 1.5;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 .advertising__card__link {
     display: block;
@@ -988,7 +995,6 @@ details p {
 .advertising__card__link:hover {
     transform: scale(1.1);
 }
-/* RODAPÉ */
 .footer {
     font-size: 12.5px;
     background-color: var(--gray--5);
@@ -1054,7 +1060,7 @@ details p {
 .footer__link--back-to-top:visited {
     color: var(--gray--a);
 }
-.blurringDiv.on {
+.blurring-div.--on {
     width: 100vw;
     height: 100vh;
     position: fixed;

@@ -60,7 +60,7 @@ class Doser {
     getNotasEprecaucoes(){
         let note;
         if(this.medicine.includes("dfc-ped") && this.weight < 4){
-            note = `<b>(1)</b> Descartar a solução de ${this.medicine.split("-ped")[0].toUpperCase()} que sobrar após a administração. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.`
+            note = `<b>(1)</b> Descartar a solução de ${this.medicine.split("-ped")[0].toUpperCase()} que sobrar após a administração. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, essas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.`
         } else if(this.medicine.includes("dfc-ped") && this.weight >= 4 && this.weight < 25){
             note = `<b>(1)</b> Dissolver o(s) comprimido(s) de ${this.medicine.split("-ped")[0].toUpperCase()} de acordo com o peso da criança e a quantidade de água recomendada. Após a dissolução, administre todo o medicamento de imediato à criança. Se restar algum medicamento no fundo do copo, acrescente um pouco mais de água e administre. <strong>${this.medicine.split("-ped")[0].toUpperCase()}<sup>dispersível</sup> deve sempre ser dissolvido em água. Não deve ser tomado inteiro mesmo que a criança consiga engolir.</strong> <b>(2)</b>&nbsp;Pacientes em TARV com regime contendo Dolutegravir (DTG), devem ajustar a dose de DTG (DTG 12/12 horas) durante o tempo que recebem Rifampicina (contida no ${this.medicine.split("-ped")[0].toUpperCase()}) e por mais 2 semanas. Depois passam a tomar o DTG apenas 1 vez/dia.`;
         } else if(this.medicine === "3dfc-ped" && this.weight >= 25){
@@ -72,15 +72,15 @@ class Doser {
             <br>• &nbsp; NVP e Rifampicina: Associação não recomendada;  
             <br>• &nbsp; ATV/r e Rifampicina: Associação não recomendada; 
             <br>• &nbsp; LPV/r e Rifampicina: ajustar a dose de LPV/r (acessar <a href="https://quinamine.github.io/tarv-pediatrico/index.html">Doseador de ARVs</a>). 
-            <br>• &nbsp; Os pacientes em TARV com ATV/r ou LPV/r devem substituir o Inibidor da protease por DTG (<strong>Nota:</strong> esta decisão deve ser tomada pelo comité terapêutico e deve-se ter em consideração o histórico dos regimes de TARV prévios do paciente). 
+            <br>• &nbsp; Os pacientes em TARV com ATV/r ou LPV/r devem substituir o Inibidor da protease por DTG (<strong>Nota:</strong> essa decisão deve ser tomada pelo comité terapêutico e deve-se ter em consideração o histórico dos regimes de TARV prévios do paciente). 
             <br>• &nbsp; A dose de DTG deve ser ajustada/duplicada (DTG 12/12 horas) durante o tempo que o paciente recebe tratamento com Rifampicina e por mais 2 semanas. 
-            <br><strong>Todos os pacientes que iniciam DTG no sector de PNCT, mantêm este tratamento após terem alta do sector.</strong>`
+            <br><strong>Todos os pacientes que iniciam DTG no sector de PNCT, mantêm esse tratamento após terem alta do sector.</strong>`
         } else if(this.medicine  === "4dfc-adulto" && this.weight < 25){
             note = 'Para peso &lt; 25 kg, use <strong>3DFC (RHZ) 75/50/150 mg Comp.</strong> e <strong>Etambutol 100 mg Comp.</strong>'
         } else if(this.medicine  === "2dfc-adulto" && this.weight < 25){
             note = 'Para peso &lt; 25 kg, use <strong>2DFC pediátrico (RH) 75/50 mg Comp.</strong>'
         } else if(this.medicine === "e100" && this.weight < 4){
-            note = '<b>(1)</b> Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, estas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.'
+            note = '<b>(1)</b> Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, essas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.'
         } else if(this.medicine === "e100" && this.weight < 25){
             note = 'Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar.'
         } else if(this.medicine ==="e100" && this.weight >= 25){
