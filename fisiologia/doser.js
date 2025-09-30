@@ -50,74 +50,73 @@ const doserGeneralFunctions = {
 }
 class Doser {
     constructor(weight, medicine){
-        this.weight = weight;
-        this.medicine = medicine;
+        this.wt = weight;
+        this.med = medicine;
     }
-    getUnidadeDaDose() {
-        return this.medicine.includes("cfz") || this.medicine.includes("cs") ? "cáps." 
+    getFormaFarmaceutica() {
+        return this.med.includes("cfz") || this.med.includes("cs") ? "cáps." 
         : "cp(s)";
     }
     getNotasEprecaucoes(){
         let note;
-        if(this.medicine.includes("dfc-ped") && this.weight < 4){
-            note = `<b>(1)</b> Descartar a solução de ${this.medicine.split("-ped")[0].toUpperCase()} que sobrar após a administração. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, essas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.`
-        } else if(this.medicine.includes("dfc-ped") && this.weight >= 4 && this.weight < 25){
-            note = `<b>(1)</b> Dissolver o(s) comprimido(s) de ${this.medicine.split("-ped")[0].toUpperCase()} de acordo com o peso da criança e a quantidade de água recomendada. Após a dissolução, administre todo o medicamento de imediato à criança. Se restar algum medicamento no fundo do copo, acrescente um pouco mais de água e administre. <strong>${this.medicine.split("-ped")[0].toUpperCase()}<sup>dispersível</sup> deve sempre ser dissolvido em água. Não deve ser tomado inteiro mesmo que a criança consiga engolir.</strong> <b>(2)</b>&nbsp;Pacientes em TARV com regime contendo Dolutegravir (DTG), devem ajustar a dose de DTG (DTG 12/12 horas) durante o tempo que recebem Rifampicina (contida no ${this.medicine.split("-ped")[0].toUpperCase()}) e por mais 2 semanas. Depois passam a tomar o DTG apenas 1 vez/dia.`;
-        } else if(this.medicine === "3dfc-ped" && this.weight >= 25){
-            note = 'Para peso &ge; 25 kg, use <strong>4DFC (RHZE) 150/75/400/275 mg Comp.</strong>'
-        } else if(this.medicine === "2dfc-ped" && this.weight >= 25){
-            note = 'Para peso &ge; 25 kg, use <strong>2DFC adulto (RH) 150/75 mg Comp.</strong>'
-        } else if(this.medicine.includes("dfc-adulto") && this.weight >= 25){
-            note = `A Rifampicina (incluída no ${this.medicine.split("-adulto")[0].toUpperCase()}) reduz os níveis dos inibidores de protease (IPs) (LPV/r, ATV/r) e da Nevirapina.
-            <br>• &nbsp; NVP e Rifampicina: Associação não recomendada;  
-            <br>• &nbsp; ATV/r e Rifampicina: Associação não recomendada; 
-            <br>• &nbsp; LPV/r e Rifampicina: ajustar a dose de LPV/r (acessar <a href="https://quinamine.github.io/tarv-pediatrico/index.html">Doseador de ARVs</a>). 
-            <br>• &nbsp; Os pacientes em TARV com ATV/r ou LPV/r devem substituir o Inibidor da protease por DTG (<strong>Nota:</strong> essa decisão deve ser tomada pelo comité terapêutico e deve-se ter em consideração o histórico dos regimes de TARV prévios do paciente). 
-            <br>• &nbsp; A dose de DTG deve ser ajustada/duplicada (DTG 12/12 horas) durante o tempo que o paciente recebe tratamento com Rifampicina e por mais 2 semanas. 
-            <br><strong>Todos os pacientes que iniciam DTG no sector de PNCT, mantêm esse tratamento após terem alta do sector.</strong>`
-        } else if(this.medicine  === "4dfc-adulto" && this.weight < 25){
-            note = 'Para peso &lt; 25 kg, use <strong>3DFC (RHZ) 75/50/150 mg Comp.</strong> e <strong>Etambutol 100 mg Comp.</strong>'
-        } else if(this.medicine  === "2dfc-adulto" && this.weight < 25){
-            note = 'Para peso &lt; 25 kg, use <strong>2DFC pediátrico (RH) 75/50 mg Comp.</strong>'
-        } else if(this.medicine === "e100" && this.weight < 4){
+        if(this.med.includes("dfc-ped") && this.wt < 4){
+            note = `<b>(1)</b> Descartar a solução de ${this.med.split("-ped")[0].toUpperCase()} que sobrar após a administração. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, essas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.`
+        } else if(this.med.includes("dfc-ped") && this.wt >= 4 && this.wt < 25){
+            note = `<b>(1)</b> Dissolver o(s) comprimido(s) de ${this.med.split("-ped")[0].toUpperCase()} de acordo com o peso da criança e a quantidade de água recomendada. Após a dissolução, administre todo o medicamento de imediato à criança. Se restar algum medicamento no fundo do copo, acrescente um pouco mais de água e administre. <strong>${this.med.split("-ped")[0].toUpperCase()}<sup>dispersível</sup> deve sempre ser dissolvido em água. Não deve ser tomado inteiro mesmo que a criança consiga engolir.</strong> <b>(2)</b>&nbsp;Pacientes em TARV com regime contendo Dolutegravir (DTG), devem ajustar a dose de DTG (DTG 12/12 horas) durante o tempo que recebem Rifampicina (contida no ${this.med.split("-ped")[0].toUpperCase()}) e por mais 2 semanas. Depois passam a tomar o DTG apenas 1 vez/dia.`;
+        } else if(this.med === "3dfc-ped" && this.wt >= 25){
+            note = 'Para peso &ge; 25 kg, está indicado <mark>4DFC (RHZE) 150/75/400/275 mg Comp.</mark>'
+        } else if(this.med === "2dfc-ped" && this.wt >= 25){
+            note = 'Para peso &ge; 25 kg, está indicado <mark>2DFC adulto (RH) 150/75 mg Comp.</mark>'
+        } else if(this.med.includes("dfc-adulto") && this.wt >= 25){
+            note = `A Rifampicina (incluída no ${this.med.split("-adulto")[0].toUpperCase()}) reduz os níveis dos inibidores de protease (IPs) (LPV/r, ATV/r), Nevirapina e de DTG.
+            <br>• &nbsp; <mark>DTG e Rifampicina</mark>: A dose de DTG deve ser duplicada (DTG 12/12 horas) durante o tempo que o paciente recebe tratamento com Rifampicina e por mais 2 semanas.
+            <br>• &nbsp; <mark>NVP e Rifampicina</mark>: Associação não recomendada;  
+            <br>• &nbsp; <mark>ATV/r e Rifampicina</mark>: Associação não recomendada; 
+            <br>• &nbsp; <mark>LPV/r e Rifampicina</mark>: ajustar a dose de LPV/r (<a href="https://quinamine.github.io/tarv-pediatrico/index.html">Doseador de ARVs</a>).`
+        } else if(this.med  === "4dfc-adulto" && this.wt < 25){
+            note = 'Para peso &lt; 25 kg, está indicado <mark>3DFC (RHZ) 75/50/150 mg Comp.</mark> e <mark>Etambutol 100 mg Comp.</mark>'
+        } else if(this.med  === "2dfc-adulto" && this.wt < 25){
+            note = 'Para peso &lt; 25 kg, está indicado <mark>2DFC pediátrico (RH) 75/50 mg Comp.</mark>'
+        } else if(this.med === "e100" && this.wt < 4){
             note = '<b>(1)</b> Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar. <b>(2)</b> <strong>As crianças com TB e com peso inferior a 4 kg, devem ser referidas para internamento.</strong> Devido à especial complexidade para dosificar o tratamento nelas, assim como pela gravidade, essas crianças devem ser geridas inicialmente nas enfermarias de Pediatria.'
-        } else if(this.medicine === "e100" && this.weight < 25){
+        } else if(this.med === "e100" && this.wt < 25){
             note = 'Os comprimidos de Etambutol devem ser esmagados e administrados com água em separado do 3DFC ou, para os que conseguem engolir, podem tomar sem esmagar.'
-        } else if(this.medicine ==="e100" && this.weight >= 25){
-            note = 'O <b>Etambutol 100 mg Comp.</b> está indicado para crianças com peso &lt; 25 kg.'
-        } else if(this.medicine.includes("-2a-linha") && this.weight < 5){
+        } else if(this.med ==="e100" && this.wt >= 25){
+            note = 'O <mark>Etambutol 100 mg Comp.</mark> está indicado para crianças com peso &lt; 25 kg.'
+        } else if(this.med.includes("-2a-linha") && this.wt < 5){
             note = 'O ajuste de alguns MATs nesta faixa de peso (&lt; 5 kg) é complexo. Estes casos deverão ser consultados com um especialista em TB-MR pediátrica.'
-        } else if(this.medicine.includes("dlm-50") && this.weight < 7){
-            note = `O Doseador de MATs da 2ª linha não prevê dosagem de <b>Delamanide 50 mg Comp.</b> para crianças com peso &lt; 7 kg.`;
-        } else if(this.medicine.includes("bdq-100") && this.weight < 10){
-            note = '<b>Bedaquilina (Bdq) 100 mg Comp.</b> está indicado a partir de 10 kg.'
-        } else if(this.medicine.includes("bdq-100") && this.weight >= 10){
-            note = '<b>(1)</b> *Dose de indução durante as 2 primeiras semanas. <b>(2)</b> Bedaquilina e Inibidores da protease (ATV/r, LPV/r): evitar combinação sempre que possível. IPs aumentam os níveis de Bedaquilina, com risco aumentado de toxicidade cardíaca e hepática. <strong>Em resumo, em pacientes em tratamento com o regime padrão para TB-MR, é preferível a combinação de TAT com um esquema de TARV contendo Dolutegravir.</strong>'
-        } else if(this.medicine.includes("lzd-150") && this.weight >= 26){
-            note = 'Para peso &ge; 26 kg, use <strong>Linezolide (Lzd) 600 mg Comp.</strong>'
-        } else if(this.medicine.includes("lzd-600") && this.weight < 6){
-            note = 'Para peso &lt; 6 kg, use <strong>Linezolide (Lzd) 150 mg Comp.</strong>'
-        } else if(this.medicine.includes("lzd-600") && this.weight > 6 || this.medicine.includes("lzd-150") && this.weight < 26){
+        } else if(this.med.includes("dlm-50") && this.wt < 7){
+            note = `O Doseador de MATs da 2ª linha não prevê dosagem de <mark>Delamanide 50 mg Comp.</mark> para crianças com peso &lt; 7 kg.`;
+        } else if(this.med.includes("bdq-100") && this.wt < 10){
+            note = '<mark>Bedaquilina (Bdq) 100 mg Comp.</mark> está indicado a partir de 10 kg.'
+        } else if(this.med.includes("bdq-100") && this.wt >= 10){
+            note = '<b>(1)</b> *Dose de indução durante as 2 primeiras semanas. <b>(2)</b> <mark>Bedaquilina e Inibidores da protease (ATV/r, LPV/r)</mark>: evitar combinação sempre que possível. IPs aumentam os níveis de Bedaquilina, com risco aumentado de toxicidade cardíaca e hepática. <strong>Em resumo, em pacientes em tratamento com o regime padrão para TB-MR, é preferível a combinação de TAT com um esquema de TARV contendo Dolutegravir.</strong>'
+        } else if(this.med.includes("lzd-150") && this.wt >= 26){
+            note = 'Para peso &ge; 26 kg, está indicado <mark>Linezolide (Lzd) 600 mg Comp.</mark>'
+        } else if(this.med.includes("lzd-600") && this.wt < 6){
+            note = 'Para peso &lt; 6 kg, está indicado <mark>Linezolide (Lzd) 150 mg Comp.</mark>'
+        } else if(this.med.includes("lzd-600") && this.wt > 6 || this.med.includes("lzd-150") && this.wt < 26){
             note = '<b>(1)</b> No regime padronizado, Linezolide é administrado apenas durante a fase intensiva. <b>(2)</b> AZT e Linezolide: evitar essa combinação pelo risco de mielotoxicidade (anemia, neutropenia, trombocitopenia).'
-        } else if(this.medicine.includes("lfx-100") && this.weight < 30){
-            note = 'Os comprimidos de <strong>Levofloxacina (Lfx) 100 mg Comp.<sup>dispersível</sup></strong> devem ser disolvidos em água antes de serem administrados.'
-        } else if(this.medicine.includes("lfx-100") && this.weight >= 30){
-            note = 'Para peso &ge; 30 kg, use <strong>Levofloxacina 250 mg Comp.</strong>'
-        } else if(this.medicine.includes("cfz-50") && this.weight >= 20){
-            note = 'Para peso &ge; 20 kg, use <strong>Clofazimina (Cfz) 100 mg Cápsulas</strong>.'
-        } else if(this.medicine.includes("cs-125") && this.weight >= 30){
-            note = 'Para peso &ge; 30 kg, use <strong>Cicloserina (Cs) 250 mg Cápsulas</strong>.'
-        } else if(this.medicine.includes("cs-125") && this.weight >= 5){
+        } else if(this.med.includes("lfx-100") && this.wt < 30){
+            note = 'Os comprimidos de <mark>Levofloxacina (Lfx) 100 mg Comp.<sup>dispersível</sup></mark> devem ser disolvidos em água antes de serem administrados.'
+        } else if(this.med.includes("lfx-100") && this.wt >= 30){
+            note = 'Para peso &ge; 30 kg, está indicado <mark>Levofloxacina 250 mg Comp.</mark>'
+        } else if(this.med.includes("cfz-50") && this.wt >= 20){
+            note = 'Para peso &ge; 20 kg, está indicado <mark>Clofazimina (Cfz) 100 mg Cápsulas</mark>.'
+        } else if(this.med.includes("cs-125") && this.wt >= 30){
+            note = 'Para peso &ge; 30 kg, está indicado <mark>Cicloserina (Cs) 250 mg Cápsulas</mark>.'
+        } else if(this.med.includes("cs-125") && this.wt >= 5){
             note = 'Se intolerância, dividir a dose em 2 tomas diárias.'
-        } else if(this.medicine.includes("cs-250")){
-            if(this.weight >= 25 || this.weight >= 12 && this.weight <= 16){
+        } else if(this.med.includes("cs-250")){
+            if(this.wt >= 25 || this.wt >= 12 && this.wt <= 16){
                 note = 'Se intolerância, dividir a dose em 2 tomas diárias.'
             }
-            else if(this.weight < 12 || this.weight > 16 && this.weight < 25){
+            else if(this.wt < 12 || this.wt > 16 && this.wt < 25){
                 note = '<b>(1)</b> As cápsulas de Cicloserina 250 mg devem ser abertas e o conteúdo diluído em 10 ml de água. Deverá ser administrada a parte correspondente de solução segundo o peso. <b>(2)</b> Se intolerância, dividir a dose em 2 tomas diárias.';
             }
-        } else if(this.medicine ==="piridoxina-50mg" && this.weight < 5){
-            note = 'Para peso &lt; 5 kg, use <strong>Piridoxina 25 mg Comp.</strong>'
+        } else if(this.med === "vitb6-25" && this.wt >= 25 || this.med === "vitb6-50" && this.wt < 25) {
+            let dosagemVitB6 = (this.med === "vitb6-25") ? 50 : 25;
+            note = `*No caso de não haver comprimido de ${dosagemVitB6} mg. A Piridoxina deve ser dada a todos pacientes em TPT ou tratamento da TB com regimes contendo Isoniazida. Em caso de neuropatia periférica, a dosagem deve ser aumentada para <mark>2&nbsp;mg/kg/dia</mark>.`;
         } else {
             note = "";
         }
@@ -125,252 +124,226 @@ class Doser {
     }
     determinarDose(){
         let dose, posologia = "uma vez/dia";
-        let weight = this.weight;
-        if(this.medicine.includes("dfc-ped") && weight < 4){
+        let wt = this.wt;
+        if(this.med.includes("dfc-ped") && wt < 4){
             let numDeCpsPorDiluir = 1, qtdDeAgua = 10;
             let doseEmMl, doseEmCpCorrespondente, posologia = "uma vez/dia"
-            weight < 2 ? (doseEmMl = 2.5, doseEmCpCorrespondente = 0.25)
-            : weight < 3 ? (doseEmMl = 5, doseEmCpCorrespondente = 0.5)
+            wt < 2 ? (doseEmMl = 2.5, doseEmCpCorrespondente = 0.25)
+            : wt < 3 ? (doseEmMl = 5, doseEmCpCorrespondente = 0.5)
             : (doseEmMl = 7.5, doseEmCpCorrespondente = 0.75);
             return this.printDoseDeCpEmMl(numDeCpsPorDiluir, qtdDeAgua, doseEmMl, doseEmCpCorrespondente, posologia);
-        } else if(this.medicine === "e100" && weight < 4){
-            weight < 2 ? dose = 0.25
-            : weight < 3 ? dose = 0.5 
+        } else if(this.med === "e100" && wt < 4){
+            wt < 2 ? dose = 0.25
+            : wt < 3 ? dose = 0.5 
             : dose = 0.75;
-        } else if(this.medicine.includes("dfc-ped") || this.medicine === "e100"){
-            dose = weight < 8 && weight >= 4 ? 1
-            : weight < 12 ? 2
-            : weight < 16 ? 3
+        } else if(this.med.includes("dfc-ped") || this.med === "e100"){
+            dose = wt < 8 && wt >= 4 ? 1
+            : wt < 12 ? 2
+            : wt < 16 ? 3
             : 4;
-            if(weight >= 25) return this.lerNotasEprecaucoes();;
-        } else if(this.medicine.includes("dfc-adulto")){
-            if(weight < 25) return this.lerNotasEprecaucoes();;
-            dose = weight < 40 ? 2
-            : weight < 55 ? 3
-            : weight < 71 ? 4
+            if(wt >= 25) return this.lerNotasEprecaucoes();;
+        } else if(this.med.includes("dfc-adulto")){
+            if(wt < 25) return this.lerNotasEprecaucoes();;
+            dose = wt < 40 ? 2
+            : wt < 55 ? 3
+            : wt < 71 ? 4
             : 5;
-        } else if(this.medicine.includes("-2a-linha") && weight < 5){
+        } else if(this.med.includes("-2a-linha") && wt < 5){
             return this.lerNotasEprecaucoes();
-        } else if(this.medicine.includes("dlm-50")){
-            if(weight < 7) return this.lerNotasEprecaucoes();
-            dose = weight < 23 ? 0.5
-            : weight < 30 ? 1
+        } else if(this.med.includes("dlm-50")){
+            if(wt < 7) return this.lerNotasEprecaucoes();
+            dose = wt < 23 ? 0.5
+            : wt < 30 ? 1
             : 2;
             posologia = " 12/12 horas";
-        } else if(this.medicine.includes("bdq-100")){
+        } else if(this.med.includes("bdq-100")){
             let doseInicial, doseSeguinte;
-            if(weight < 10){
+            if(wt < 10){
                 return this.lerNotasEprecaucoes();
-            } else if(weight < 16){
+            } else if(wt < 16){
                 doseInicial = "100 mg (1 comp.)", doseSeguinte = `50 mg (${this.converterDoseDecimalEmFracao(0.5)} comp.)`;
-            } else if(weight < 30){
+            } else if(wt < 30){
                 doseInicial = "200 mg (2 comp.)", doseSeguinte = "100 mg (1 comp.)";
             } else {
                 doseInicial = "400 mg (4 comp.)", doseSeguinte = "200 mg (2 comp.)";
             }
             return this.printDoseDeBdqPeso30ouMais(doseInicial, doseSeguinte);
-        } else if(this.medicine.includes("lzd-150")){
-            dose = weight < 8 ? 0.5 
-            : weight < 12 ? 1 
-            : weight < 18 ? 1.5 
+        } else if(this.med.includes("lzd-150")){
+            dose = wt < 8 ? 0.5 
+            : wt < 12 ? 1 
+            : wt < 18 ? 1.5 
             : 2;
-            if(weight >= 26) return this.lerNotasEprecaucoes();;
-        } else if(this.medicine.includes("lzd-600")){
-            if(weight < 6){
+            if(wt >= 26) return this.lerNotasEprecaucoes();;
+        } else if(this.med.includes("lzd-600")){
+            if(wt < 6){
                 return this.lerNotasEprecaucoes();;
-            } else if(weight < 16){
+            } else if(wt < 16){
                 let numDeCpsPorDiluir = 0.5, qtdDeAgua = 15;
                 let doseEmMl = "7.5", doseEmCpCorrespondente = 0.25, posologia = "uma vez/dia";
                 return this.printDoseDeCpEmMl(numDeCpsPorDiluir, qtdDeAgua, doseEmMl, doseEmCpCorrespondente, posologia);
-            } else if(weight < 36){
+            } else if(wt < 36){
                 dose = 0.5;
             } else {
                 dose = 1;
             }
-        } else if(this.medicine.includes("lfx-100")){
-            dose = weight < 6 ? 1 
-            : weight < 9 ? 1.5 
-            : weight < 11 ? 2 
-            : weight < 12 ? 2.5 
-            : weight < 13 ? 2
-            : weight < 16 ? 3
-            : weight < 19 ? 3.5
-            : weight < 22 ? 4
-            : weight < 24 ? 4.5
+        } else if(this.med.includes("lfx-100")){
+            dose = wt < 6 ? 1 
+            : wt < 9 ? 1.5 
+            : wt < 11 ? 2 
+            : wt < 12 ? 2.5 
+            : wt < 13 ? 2
+            : wt < 16 ? 3
+            : wt < 19 ? 3.5
+            : wt < 22 ? 4
+            : wt < 24 ? 4.5
             : 5;
-            if(weight >= 30) return this.lerNotasEprecaucoes();;
-        } else if(this.medicine.includes("lfx-250")){
-            dose = weight < 9 ? 0.5  
-            : weight < 12 ? 0.75 
-            : weight < 17 ? 1
-            : weight < 25 ? 1.5
-            : weight < 30 ? 2
-            : weight < 46 ? 3
+            if(wt >= 30) return this.lerNotasEprecaucoes();;
+        } else if(this.med.includes("lfx-250")){
+            dose = wt < 9 ? 0.5  
+            : wt < 12 ? 0.75 
+            : wt < 17 ? 1
+            : wt < 25 ? 1.5
+            : wt < 30 ? 2
+            : wt < 46 ? 3
             : 4;
-        } else if(this.medicine.includes("cfz-50")){
+        } else if(this.med.includes("cfz-50")){
             dose = 1;
-            if(weight < 10){
+            if(wt < 10){
                 posologia = "dias alternados";
-            } else if(weight < 20){
+            } else if(wt < 20){
                 posologia = "uma vez/dia";
             } else {
                 return this.lerNotasEprecaucoes();;
             }
-        } else if(this.medicine.includes("cfz-100")){
+        } else if(this.med.includes("cfz-100")){
             dose = 1;
-            if(weight < 10){
+            if(wt < 10){
                 posologia = "a cada 3 dias";
-            } else if(weight < 20){
+            } else if(wt < 20){
                 posologia = "dias alternados";
             } else{
                 posologia = "uma vez/dia";
             }
-        } else if(this.medicine.includes("cs-125")){
-            dose = weight < 10 ? 1 
-            : weight < 16 ? 2 
-            : weight < 21 ? 3
+        } else if(this.med.includes("cs-125")){
+            dose = wt < 10 ? 1 
+            : wt < 16 ? 2 
+            : wt < 21 ? 3
             : 4;
-            if(weight >= 30) return this.lerNotasEprecaucoes();;
-        } else if(this.medicine.includes("cs-250")){
-            if(weight < 12 || weight > 16 && weight < 25){
+            if(wt >= 30) return this.lerNotasEprecaucoes();;
+        } else if(this.med.includes("cs-250")){
+            if(wt < 12 || wt > 16 && wt < 25){
                 let numDeCpsPorDiluir = 1, qtdDeAgua = 10;
                 let doseEmMl, doseEmCpCorrespondente, posologia = "uma vez/dia"
-                if(weight < 9){
+                if(wt < 9){
                     doseEmMl = 5, doseEmCpCorrespondente = 0.5;
-                } else if(weight < 12){
+                } else if(wt < 12){
                     doseEmMl = 7.5, doseEmCpCorrespondente = 0.75;
-                } else if(weight > 16 && weight < 25){
+                } else if(wt > 16 && wt < 25){
                     numDeCpsPorDiluir = 2,  qtdDeAgua = 20, doseEmMl = 15, doseEmCpCorrespondente = 1.5
                 }
                 return this.printDoseDeCpEmMl(numDeCpsPorDiluir, qtdDeAgua, doseEmMl, doseEmCpCorrespondente, posologia);
-            } else if(weight >= 12 && weight < 17){
+            } else if(wt >= 12 && wt < 17){
                 dose = 1;
-            } else if(weight >= 25 && weight < 56){
+            } else if(wt >= 25 && wt < 56){
                 dose = 2;
-            } else if(weight >= 56){
+            } else if(wt >= 56){
                 dose = 3;
             }
-        } else if(this.medicine === "piridoxina-25mg"){
-            weight < 5 ? (dose = 0.5, posologia = " 3 vezes/semana")
-            : dose = weight < 8 ? 0.5
-            : weight < 15 ? 1
-            : 2;
-        } else if(this.medicine === "piridoxina-50mg"){
-            if(weight < 5) return this.lerNotasEprecaucoes();;
-            weight < 15 ? (dose = 0.5, posologia = " 3 vezes/semana")
-            : dose = 1;
+        } else if(this.med === "vitb6-25") {
+            dose = wt < 25 ? 0.5
+            : "2*";
+        } else if(this.med === "vitb6-50") {
+            dose = wt < 25 ? "0.25*"
+            : 1;
         }
         return this.printDoseEmCp(dose, posologia);
     }
     printDoseEmCp(dose, posologia){
-        if(this.medicine.includes("dfc-ped")){
+        if(this.med.includes("dfc-ped")){
             return this.printDoseDispersivel(dose, (dose * 10));
         }
-        let numeroDetomasPorSemana; // Variável essencial para o cálculo de dispensa para 14 ou 28 dias;
-        posologia.includes("3 vezes/semana") ? numeroDetomasPorSemana = 3 : numeroDetomasPorSemana = 7;
-        posologia.includes("12/12 horas") && (numeroDetomasPorSemana = 14);
-        posologia.includes("dias alternados") && (numeroDetomasPorSemana = 3.5);
-        posologia.includes("a cada 3 dias") && (numeroDetomasPorSemana = 2.5);
-        return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
-            <thead class="table__header table__header--bg-color-grayscale">
-                <tr>
-                    <th class="table__cell" colspan="2">Dose</th> 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table__cell" colspan="2">${this.converterDoseDecimalEmFracao(dose)} ${this.getUnidadeDaDose()} ${posologia}</td> 
-                </tr>
-                <tr class="table__header table__header--bg-color-grayscale">
-                    <td class="table__cell">Dispensa para <br>14 dias</td> 
-                    <td class="table__cell --border-l">Dispensa para <br>28 dias</td>
-                </tr>
-                <tr>
-                    <td class="table__cell">${this.calcularDispensaPara2semanas(dose, numeroDetomasPorSemana)} ${this.getUnidadeDaDose()}</td> 
-                    <td class="table__cell --border-l">${this.calcularDispensaPara4semanas(dose, numeroDetomasPorSemana)} ${this.getUnidadeDaDose()}</td>
-                </tr>                   
-            </tbody>
+        let doseDiaria = Number(String(dose).replace(/[^0-9.]/g, ""));
+        posologia.includes("12/12 horas") && (doseDiaria = dose * 2);
+        posologia.includes("dias alternados") && (doseDiaria = dose - dose / 2);
+        posologia.includes("a cada 3 dias") && (doseDiaria = dose / 3);
+        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+            <tr>
+                <td colspan="3">${this.converterDoseDecimalEmFracao(dose)} ${this.getFormaFarmaceutica()} ${posologia}</td> 
+            </tr>
+            <tr><th colspan="3">Quantidade a aviar para:</th></tr>
+            <tr><th>7 dias</th><th>15 dias</th><th>30 dias</th></tr>
+            <tr>
+                <td>${this.calcularDispensaPara(doseDiaria, 7)} ${this.getFormaFarmaceutica()}</td> 
+                <td>${this.calcularDispensaPara(doseDiaria, 15)} ${this.getFormaFarmaceutica()}</td>
+                <td>${this.calcularDispensaPara(doseDiaria, 30)} ${this.getFormaFarmaceutica()}</td>
+            </tr>
         </table>`
     }
-    printDoseDispersivel(dose, qtdDeAguaParaDiluicao){
-        return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
-            <thead class="table__header table__header--bg-color-grayscale">
-                <tr>
-                    <th class="table__cell">Dose</th> 
-                    <th class="table__cell --border-l">Quantidade de água <br>para diluição</th>
-                </tr>
+    printDoseDispersivel(dose, h20paraDil){
+        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+            <thead>
+                <tr><th colspan="2">Dose e Posologia</th><th>Água para diluição</th></tr>
             </thead>
             <tbody>
+                <tr><td colspan="2">${dose} ${this.getFormaFarmaceutica()} uma vez/dia</td><td>${h20paraDil} ml</td></tr>
+                <tr><th colspan="3">Quantidade a aviar para:</th></tr>
+                <tr><th>7 dias</th><th>15 dias</th><th>30 dias</th></tr>
                 <tr>
-                    <td class="table__cell">${dose} ${this.getUnidadeDaDose()} uma vez/dia</td> 
-                    <td class="table__cell --border-l">${qtdDeAguaParaDiluicao} ml</td>
-                </tr>
-                <tr class="table__header table__header--bg-color-grayscale">
-                    <td class="table__cell">Dispensa para <br>14 dias</td> 
-                    <td class="table__cell --border-l">Dispensa para <br>28 dias</td>
-                </tr>
-                <tr>
-                    <td class="table__cell">${this.calcularDispensaPara2semanas(dose, 7)} ${this.getUnidadeDaDose()}</td> 
-                    <td class="table__cell --border-l">${this.calcularDispensaPara4semanas(dose, 7)} ${this.getUnidadeDaDose()}</td>
+                    <td>${this.calcularDispensaPara(dose, 7)} ${this.getFormaFarmaceutica()}</td> 
+                    <td>${this.calcularDispensaPara(dose, 15)} ${this.getFormaFarmaceutica()}</td>
+                    <td>${this.calcularDispensaPara(dose, 30)} ${this.getFormaFarmaceutica()}</td>
                 </tr>                   
             </tbody>
         </table>` 
     }
     printDoseDeCpEmMl(numDeCpsPorDiluir, qtdDeAgua, doseEmMl, doseEmCpCorrespondente, posologia){
-        let dispensaQuinzenal = numDeCpsPorDiluir * 14;
-        let dispensaMensal = numDeCpsPorDiluir * 28;
-        let preposicaoDoOuDa = this.medicine.includes("cfz") || this.medicine.includes("cs") ? "da" 
+        let preposicaoDoOuDa = this.med.includes("cfz") || this.med.includes("cs") ? "da" 
             : "do";
-        return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
-            <thead class="table__header table__header--bg-color-grayscale">
-                <tr>
-                    <th class="table__cell">Diluir</th> 
-                    <th class="table__cell --border-l">Administrar</th>
-                </tr>
+        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+            <thead>
+                <tr><th colspan="2">Diluir</th><th>Administrar</th></tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="table__cell">${this.converterDoseDecimalEmFracao(numDeCpsPorDiluir)} ${this.getUnidadeDaDose()} em ${qtdDeAgua} ml de água</td> 
-                    <td class="table__cell --border-l">${doseEmMl} ml da diluição - correspondente a ${this.converterDoseDecimalEmFracao(doseEmCpCorrespondente)} ${preposicaoDoOuDa} ${this.getUnidadeDaDose()} ${posologia}</td>
+                    <td colspan="2">${this.converterDoseDecimalEmFracao(numDeCpsPorDiluir)} ${this.getFormaFarmaceutica()} em ${qtdDeAgua} ml de água</td> 
+                    <td>${doseEmMl} ml da diluição - correspondente a ${this.converterDoseDecimalEmFracao(doseEmCpCorrespondente)} ${preposicaoDoOuDa} ${this.getFormaFarmaceutica()} ${posologia}</td>
                 </tr>
-                <tr class="table__header table__header--bg-color-grayscale">
-                    <td class="table__cell">Dispensa para <br>14 dias</td> 
-                    <td class="table__cell --border-l">Dispensa para <br>28 dias</td>
-                </tr>
+                <tr><th colspan="3">Quantidade a aviar para:</th></tr>
+                <tr><th>7&nbsp;dias</th><th>15&nbsp;dias</th><th>30 dias</th></tr>
                 <tr>
-                    <td class="table__cell">${dispensaQuinzenal} ${this.getUnidadeDaDose()}</td> 
-                    <td class="table__cell --border-l">${dispensaMensal} ${this.getUnidadeDaDose()}</td>
-                </tr>                   
+                    <td>${this.calcularDispensaPara(numDeCpsPorDiluir, 7)} ${this.getFormaFarmaceutica()}</td> 
+                    <td>${this.calcularDispensaPara(numDeCpsPorDiluir, 15)} ${this.getFormaFarmaceutica()}</td>
+                    <td>${this.calcularDispensaPara(numDeCpsPorDiluir, 30)} ${this.getFormaFarmaceutica()}</td>
+                </tr>                 
             </tbody>
         </table>` 
     }
     printDoseDeBdqPeso30ouMais(doseInicial, doseSeguinte){
-        return `<table class="table table--grayscale table--layout-fixed table--no-margin-b">
-            <thead class="table__header table__header--bg-color-grayscale">
+        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+            <thead>
                 <tr>
-                    <th class="table__cell">Dose inicial*</th> 
-                    <th class="table__cell --border-l">Após 14 dias</th>
+                    <th>Dose inicial*</th> 
+                    <th>Após 14 dias</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="table__cell">${doseInicial} uma vez/dia por 14 dias</td> 
-                    <td class="table__cell --border-l">Diminuir para ${doseSeguinte} 3 dias/semana (2ª, 4ª e 6ª feira)</td>
+                    <td>${doseInicial} uma vez/dia por 14 dias</td> 
+                    <td>Diminuir para ${doseSeguinte} 3 dias/semana (2ª, 4ª e 6ª feira)</td>
                 </tr>                
             </tbody>
         </table>` 
     }
     converterDoseDecimalEmFracao(doseDecimal){
         return doseDecimal === 0.25 ? doseDecimal = "<sup>1</sup>/<sub>4</sub>"
+        : doseDecimal === "0.25*" ? doseDecimal = "<sup>1</sup>/<sub>4</sub>*"
         : doseDecimal === 0.5 ? doseDecimal = "<sup>1</sup>/<sub>2</sub>"
         : doseDecimal === 0.75 ? doseDecimal = "<sup>3</sup>/<sub>4</sub>"
+        : doseDecimal === "2*" ? doseDecimal = "<sup>3</sup>/<sub>4</sub>"
         : doseDecimal = doseDecimal;
     }
-    calcularDispensaPara2semanas(dose, numeroDetomasPorSemana){
-        return dose * numeroDetomasPorSemana * 2; // Em que 2 corresponde as semanas de dispensa;
-    }
-    calcularDispensaPara4semanas(dose, numeroDetomasPorSemana){
-        return dose * numeroDetomasPorSemana * 4; // Em que 4 corresponde as semanas de dispensa;
+    calcularDispensaPara(doseDiaria, numeroDeDias){
+        return Math.ceil(doseDiaria * numeroDeDias); // Em que 2 corresponde as semanas de dispensa;
     }
     lerNotasEprecaucoes(){
         return '<p class="doser__section__note">Ler <b>Notas e Precauções</b>👇.</p>';
