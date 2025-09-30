@@ -33,7 +33,7 @@
     <body id="body" class="body-com-topo-propaganda" ontouchstart="">
         <div class="topo-propaganda">
             <div class="topo-propaganda__row">
-                <a href=https://quinamine.github.io/aderito-felix-quinamine/paginas/portfolio.html class="topo-propaganda__link">Sou um link para outros serviços afins, <span class="--hide-on-mobile">clique</span><span class="--hide-on-desktop">toque</span>-me para acessá-los.</a>
+                <a href=https://quinamine.github.io/aderito-felix-quinamine/paginas/portfolio.html class="topo-propaganda__link">Este é um link para outros serviços afins, <span class="--hide-on-mobile">clique</span><span class="--hide-on-desktop">toque</span>-o para acessá-los.</a>
                 <button class="topo-propaganda__btn" title="Fechar">&times;</button>
             </div>
         </div>
@@ -61,6 +61,10 @@
                             <li><a href="https://quinamine.github.io/aderito-felix-quinamine/index.html" class="meatballs-menu-expanded__option meatballs-menu-expanded__option--border-radius-b">Sobre o Desenvolvedor</a></li>
                         </ul>
                     </div>
+                    <div class="tooltip">
+                        <div class="tooltip__arrow"></div>
+                        <p class="tooltip__tip"><span class="--hide-on-desktop">Toque</span><span class="--hide-on-mobile">Clique</span> aqui para mais conteúdos afins (efeitos adversos aos MATs, manejo de DAG, Doseador de ARVs e CTZ, etc).</p>
+                    </div>
                 </div>
             </div>
             <div role="navigation" class="layout-row layout-row--no-space-between-n-padding header__main-menu">
@@ -81,7 +85,7 @@
                 <div class="doser__section doser__section--medicines">
                     <label class="doser__label doser__label--medicine select-opener" for="select">Fármaco:</label>
                     <ul class="doser__select" id="select">
-                        <li class="doser__select__option doser__select__option--placeholder --selected"><span class="--hide-on-desktop">Toque</span><span class="--hide-on-mobile">Clique</span> aqui para abrir a lista de MATs</li>
+                        <li class="doser__select__option doser__select__option--placeholder --selected"><span class="--hide-on-desktop">Toque</span><span class="--hide-on-mobile">Clique</span> aqui para abrir a lista dos MATs</li>
                         <div class="doser__select__optgroup doser__select__optgroup--mat-1">
                             <h3 class="doser__optgroup__title">Fase intensiva (2 meses)</h3>
                             <li class="doser__select__option" data-farmaco="3dfc-ped">3DFC (RHZ) 75/50/150 mg Comp.<sup>dispersível</sup></li>
@@ -128,12 +132,12 @@
                     <h2 class="doser__section__title">Notas e Precauções</h2>
                     <p class="doser__section__note doser__section__note--no-padding"></p>
                 </div>
-                <p class="bibliography-source"><strong>Referência:</strong> MOÇAMBIQUE. Ministério da Saúde. Direcção Nacional de Saúde Pública. <span class="bibliography-source--mats">Programa Nacional de Controlo de Tuberculose. Guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a></span><span class="bibliography-source--piridoxina --display-none">Programa Nacional de Controlo de ITS/HIV e SIDA. <a href="referencias/triptico-versao-2025-manejo-de-infeccao-por-hiv.pdf">Manejo de infecção por HIV na criança e adolescente, versão 2025</a></span>.</p>
+                <p class="bibliography-source"><strong>Referência:</strong> MOÇAMBIQUE. Ministério da Saúde. Direcção Nacional de Saúde Pública. <span class="bibliography-source--mats">Programa Nacional de Controlo de Tuberculose. Guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" target="_blank">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a></span><span class="bibliography-source--piridoxina --display-none">Programa Nacional de Controlo de ITS/HIV e SIDA. <a href="referencias/triptico-versao-2025-manejo-de-infeccao-por-hiv.pdf" target="_blank">Manejo de infecção por HIV na criança e adolescente, versão 2025</a></span>.</p>
             </div>
             <article class="article">
                 <section class="article__section article__section--main --open">
                     <h2 class="article__title article__title--level-1">Visão geral sobre o TAT Pediátrico</h2>
-                    <p class="article__p">O <b>TAT Pediátrico</b> é um serviço online gratuito que, de acordo com o peso inserido pelo usuário, doseia automaticamente medicamentos anti-tuberculose (MATs) e Piridoxina. Tem como referência o guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data da publicação do TAT (Agosto/2024), ainda estava em vigor no Serviço Nacional de Saúde (SNS) em Moçambique.</p>
+                    <p class="article__p">O <b>TAT Pediátrico</b> é um serviço online gratuito que, de acordo com o peso inserido pelo usuário, doseia automaticamente medicamentos anti-tuberculose (MATs) e Piridoxina. Tem como referência o guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" target="_blank">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data da publicação do TAT (Agosto/2024), ainda estava em vigor no Serviço Nacional de Saúde (SNS) em Moçambique.</p>
                     <p class="article__p">O TAT Pediátrico é composto por 3 abas principais, respectivamente:</p>
                     <ul class="article__list article__list--ol">
                         <li>Doseador de MATs da 1ª linha;</li>
@@ -186,7 +190,7 @@
                         <ul class="article__list article__list--ul">
                             <li>Tratar com anti-inflamatórios não-esteróides (Ibuprofeno - <a href=https://quinamine.github.io/calculadora-de-doses-pediatricas/index.html>vide dosagem</a>).</li>
                             <li>Se a dor for muito intensa, considerar reduzir a dose de Pirazinamida.</li>
-                            <li>Se dor severa, tratar com Alopurinol (Vide no <a href="referencias/formulario-nacional-de-medicamentos.pdf">Formulário Nacional de Medicamentos</a>).</li>
+                            <li>Se dor severa, tratar com Alopurinol (Vide no <a href="referencias/formulario-nacional-de-medicamentos.pdf" target="_blank">Formulário Nacional de Medicamentos</a>).</li>
                         </ul>
                     </details>
                     <details>
@@ -197,7 +201,7 @@
                             <li>Adultos: Aumentar a dose de Piridoxina para 100 mg/dia (200 mg/dia em HIV+).</li>
                             <li> Crianças: Aumentar a dose de Piridoxina para 25 mg/dia.</li>
                             <li>Se dor, Ibuprofeno.</li>
-                            <li>Pode-se considerar Amitriptilina (Vide no <a href="referencias/formulario-nacional-de-medicamentos.pdf">Formulário Nacional de Medicamentos</a>).
+                            <li>Pode-se considerar Amitriptilina (Vide no <a href="referencias/formulario-nacional-de-medicamentos.pdf" target="_blank">Formulário Nacional de Medicamentos</a>).
                             </li>
                         </ul>
                     </details>
@@ -297,8 +301,8 @@
                 </section>
                 <section class="article__section article__section--fixed article__section--efeitos-adversos-2">
                     <h2 class="article__title article__title--level-1">Efeitos Adversos aos MATs de 2ª Linha</h2>
-                    <p class="article__p"><a href="referencias/efeitos-adversos-aos-mat-da-2a-linha.pdf">Efeitos adversos em pacientes que recebem tratamento para TB resistente e fármacos responsáveis</a>.</p>
-                    <p class="details__p--border-b"><a href="referencias/manejo-de-efeitos-adversos-aos-mat-da-2a-linha.pdf">Manejo de efeitos adversos do tratamento da TB resistente</a>.</p>
+                    <p class="article__p"><a href="referencias/efeitos-adversos-aos-mat-da-2a-linha.pdf" target="_blank">Efeitos adversos em pacientes que recebem tratamento para TB resistente e fármacos responsáveis</a>.</p>
+                    <p class="details__p--border-b"><a href="referencias/manejo-de-efeitos-adversos-aos-mat-da-2a-linha.pdf" target="_blank">Manejo de efeitos adversos do tratamento da TB resistente</a>.</p>
                     <p class="article__p article__p--margin-top article__p--highlight article__p--danger-color">Atenção! Todas as reacções adversas devem ser notificadas através da <a href="referencias/ficha-amarela.pdf" target="_blank">ficha de notificação de reacções adversas aos medicamentos e vacinas (veja aqui)</a>.</p>
                     <button class="article__section__btn--close">&times;</button>
                 </section>
@@ -609,7 +613,7 @@
             </article>
             <div class="dialog-box-default dialog-box-default--bibliography">
                 <h3 class="dialog-box-default__title">LEIA, É IMPORTANTE!</h3>
-                <p class="dialog-box-default__p">O TAT Pediátrico foi criado de acordo com as normas do guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data da publicação do TAT (Agosto/2024), ainda estavam em vigor no Serviço Nacional de Saúde (SNS) em Moçambique. No entanto, face as frequentes mudanças nas abordagens médicas que acompanham a evolução da Medicina, tais normas poderão ter sido actualizadas e outro instrumento de apoio, disponibilizado.</p>
+                <p class="dialog-box-default__p">O TAT Pediátrico foi criado de acordo com as normas do guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" target="_blank">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data da publicação do TAT (Agosto/2024), ainda estavam em vigor no Serviço Nacional de Saúde (SNS) em Moçambique. No entanto, face as frequentes mudanças nas abordagens médicas que acompanham a evolução da Medicina, tais normas poderão ter sido actualizadas e outro instrumento de apoio, disponibilizado.</p>
                 <div class="dialog-box-default__btn-container">
                     <button class="dialog-box-default__btn dialog-box-default__btn--entendi">Entendi</button>
                 </div>
@@ -927,8 +931,8 @@
                 <div class="footer__bibliography-sources">
                     <h5 class="footer__bibliography-sources__title">Referências:</h5>
                     <ul class="footer__bibliography-sources__list">
-                        <li>MOÇAMBIQUE. Ministério da Saúde. Direcção Nacional de Saúde Pública. Programa Nacional de Controlo de Tuberculose.  Guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" class="footer__bibliography-sources__link">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019.</a></li>
-                        <li>MOÇAMBIQUE. Ministério da Saúde. Direcção Nacional de Saúde Pública. Programa Nacional de Controlo de ITS/HIV e SIDA. Tríptico <a href="referencias/triptico-versao-2025-manejo-de-infeccao-por-hiv.pdf" class="footer__bibliography-sources__link">Manejo de infecção por HIV na criança e adolescente, versão 2025</a>.</li>
+                        <li>MOÇAMBIQUE. Ministério da Saúde. Direcção Nacional de Saúde Pública. Programa Nacional de Controlo de Tuberculose.  Guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" target="_blank" class="footer__bibliography-sources__link">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019.</a></li>
+                        <li>MOÇAMBIQUE. Ministério da Saúde. Direcção Nacional de Saúde Pública. Programa Nacional de Controlo de ITS/HIV e SIDA. Tríptico <a href="referencias/triptico-versao-2025-manejo-de-infeccao-por-hiv.pdf" target="_blank" class="footer__bibliography-sources__link">Manejo de infecção por HIV na criança e adolescente, versão 2025</a>.</li>
                     </ul>
                 </div>
                 <p class="footer__p footer__p--created-by">Criado com atenção e <span class="footer__p__heart">❤</span> por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a> | ©&nbsp;<span class="footer__current-year"></span> TAT&nbsp;Pediátrico

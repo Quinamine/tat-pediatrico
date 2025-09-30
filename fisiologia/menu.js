@@ -49,6 +49,14 @@ const menu = {
         defaultOption.classList.add("--selected");
     }
 }
+const Tooltip = {
+    mostrar(tooltip) {
+        tooltip.classList.add("--show");
+    },
+    omitir(tooltip) {
+        tooltip.classList.remove("--show");
+    }
+}
 function listenToEvents() {
     // Open & close meatBalls-menu by clicking the menu
     const meatBallsMenu = document.querySelector(".meatballs-menu");
@@ -89,6 +97,18 @@ function listenToEvents() {
     const mainMenuBtns = document.querySelectorAll(".header__main-menu__btn");
     mainMenuBtns.forEach( btn => {
         btn.addEventListener("click", () => menu.showCurrentTabDoser(btn));
+    });
+    // Tooltips
+    const tooltip = document.querySelector(".tooltip");
+    const btnEntendi = document.querySelector(".dialog-box-default__btn--entendi");
+    btnEntendi.addEventListener("click", () => {
+        setTimeout(() => {
+            Tooltip.mostrar(tooltip);
+            document.body.scrollIntoView();
+        }, 3000);
+        setTimeout(() => {
+            Tooltip.omitir(tooltip);
+        }, 10000);
     });
     // Share
     let data = {

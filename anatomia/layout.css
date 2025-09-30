@@ -1183,3 +1183,44 @@ mark {
     right: 15px;
     top: calc(50% - 19px / 2);
 }
+.tooltip {
+    position: absolute;
+    right: 5px;
+    top: 48px;
+    background-color: var(--black-a8);
+    box-shadow: 0 0 5px var(--gray);
+    color: var(--yt);
+    font-size: 13px;
+    padding: 15px;
+    border-radius: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+    z-index: 777;
+    width: 250px;
+}
+@media screen and (min-width: 1304px) {
+    .tooltip {
+        right: calc(50vw - (var(--layout-width) + 12px) / 2);
+    }
+}
+.body-com-topo-propaganda .tooltip {
+    top: calc(48px + 53.59px);
+}
+@media screen and (min-width: 475px) {
+    .body-com-topo-propaganda .tooltip {
+        top: calc(48px + 38px)
+    }
+}
+.tooltip.--show {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip__arrow {
+    position: absolute;
+    right: 18px;
+    top: -14px;
+    border-bottom: 15px solid var(--black-a8);
+    border-left: 18px solid transparent;
+    z-index: 778;
+}
