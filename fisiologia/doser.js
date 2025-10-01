@@ -114,10 +114,18 @@ class Doser {
             else if(this.wt < 12 || this.wt > 16 && this.wt < 25){
                 note = '<b>(1)</b> As cápsulas de Cicloserina 250 mg devem ser abertas e o conteúdo diluído em 10 ml de água. Deverá ser administrada a parte correspondente de solução segundo o peso. <b>(2)</b> Se intolerância, dividir a dose em 2 tomas diárias.';
             }
+        } else if(this.med === "vitb6-25" && this.wt < 25 || this.med === "vitb6-50" && this.wt >= 25) {
+            note = `A Piridoxina deve ser dada a todos pacientes em TPT ou tratamento da TB com regimes contendo Isoniazida. Em caso de neuropatia periférica, a dosagem deve ser aumentada para <mark>2&nbsp;mg/kg/dia</mark>. <br><b>Sinais e sintomas de neuropatia periférica</b>: Dor, queimação ou formigamento nas mãos ou pés, dormência ou perda de sensibilidade nos braços e pernas, ou cãibras ou espasmos musculares.`;
         } else if(this.med === "vitb6-25" && this.wt >= 25 || this.med === "vitb6-50" && this.wt < 25) {
             let dosagemVitB6 = (this.med === "vitb6-25") ? 50 : 25;
-            note = `*No caso de não haver comprimido de ${dosagemVitB6} mg. A Piridoxina deve ser dada a todos pacientes em TPT ou tratamento da TB com regimes contendo Isoniazida. Em caso de neuropatia periférica, a dosagem deve ser aumentada para <mark>2&nbsp;mg/kg/dia</mark>.`;
-        } else {
+            note = `*No caso de não haver comprimidos de ${dosagemVitB6} mg. A Piridoxina deve ser dada a todos pacientes em TPT ou tratamento da TB com regimes contendo Isoniazida. Em caso de neuropatia periférica, a dosagem deve ser aumentada para <mark>2&nbsp;mg/kg/dia</mark>. <br><b>Sinais e sintomas de neuropatia periférica</b>: Dor, queimação ou formigamento nas mãos ou pés, dormência ou perda de sensibilidade nos braços e pernas, ou cãibras ou espasmos musculares.`;
+        } else if(this.med.includes("bpal") && this.wt < 30) {
+            note = `O peso mínimo deve ser 30 kg e idade &ge; 14 anos.`;
+        } else if(this.med.includes("bpal") && this.wt >= 30) {
+            let fql = (this.med === "bpall") ? "; <mark>Lfx</mark>: Levofloxacina." 
+            : (this.med === "bpalm") ? "; <mark>Mfx</mark>: Moxifloxacina" : ".";
+            note = `<mark>Bdq 100 mg Comp.:</mark> <br>${this.printDoseDeBdq()} <hr><b>Legenda:</b> <mark>Bdq</mark>: Bedaquilina;  <mark>Pa</mark>: Pretomanida;  <mark>Lzd</mark>: Linezolide${fql}`;
+        }  else {
             note = "";
         }
         return note;
@@ -157,17 +165,10 @@ class Doser {
             : 2;
             posologia = " 12/12 horas";
         } else if(this.med.includes("bdq-100")){
-            let doseInicial, doseSeguinte;
             if(wt < 10){
                 return this.lerNotasEprecaucoes();
-            } else if(wt < 16){
-                doseInicial = "100 mg (1 comp.)", doseSeguinte = `50 mg (${this.converterDoseDecimalEmFracao(0.5)} comp.)`;
-            } else if(wt < 30){
-                doseInicial = "200 mg (2 comp.)", doseSeguinte = "100 mg (1 comp.)";
-            } else {
-                doseInicial = "400 mg (4 comp.)", doseSeguinte = "200 mg (2 comp.)";
             }
-            return this.printDoseDeBdqPeso30ouMais(doseInicial, doseSeguinte);
+            return this.printDoseDeBdq();
         } else if(this.med.includes("lzd-150")){
             dose = wt < 8 ? 0.5 
             : wt < 12 ? 1 
@@ -255,6 +256,9 @@ class Doser {
         } else if(this.med === "vitb6-50") {
             dose = wt < 25 ? "0.25*"
             : 1;
+        } else if(this.med.includes("bpal")) {
+            if(wt < 30) return this.lerNotasEprecaucoes();
+            return this.printDoseDeBpalm();
         }
         return this.printDoseEmCp(dose, posologia);
     }
@@ -318,35 +322,76 @@ class Doser {
             </tbody>
         </table>` 
     }
-    printDoseDeBdqPeso30ouMais(doseInicial, doseSeguinte){
+    printDoseDeBdq(){
+        let doseInicial, doseSeguinte, doseParaCalcDeDisp;
+        if(this.wt < 16){
+            doseInicial = "100 mg (1 comp.)", doseSeguinte = `50 mg (${this.converterDoseDecimalEmFracao(0.5)} comp.)`;
+            doseParaCalcDeDisp = 1;
+        } else if(this.wt < 30){
+            doseInicial = "200 mg (2 comp.)", doseSeguinte = "100 mg (1 comp.)";
+            doseParaCalcDeDisp = 2;
+        } else {
+            doseInicial = "400 mg (4 comp.)", doseSeguinte = "200 mg (2 comp.)";
+            doseParaCalcDeDisp = 4;
+        }
+        let dispensaS = Math.ceil(doseParaCalcDeDisp * 7);
+        let dispensaQ = Math.ceil(doseParaCalcDeDisp * 15);
+        let dispensaM = Math.ceil(doseParaCalcDeDisp * 30);
         return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
             <thead>
-                <tr>
-                    <th>Dose inicial*</th> 
-                    <th>Após 14 dias</th>
-                </tr>
+                <tr><th colspan="2">Dose inicial*</th><th colspan="3">Após 14 dias</th></tr>
             </thead>
             <tbody>
+                <tr><td colspan="2">${doseInicial} uma vez/dia por 14 dias</td><td colspan="3">Diminuir para ${doseSeguinte} 3 dias/semana (2ª, 4ª e 6ª feira)</td></tr>
+                <tr><th colspan="2">Dispensa para:</th><th>7 dias</th><th>15 dias</th><th>30 dias</th></tr>
                 <tr>
-                    <td>${doseInicial} uma vez/dia por 14 dias</td> 
-                    <td>Diminuir para ${doseSeguinte} 3 dias/semana (2ª, 4ª e 6ª feira)</td>
-                </tr>                
+                    <td colspan="2">Nas 1ªs duas semanas</td>
+                    <td>${dispensaS}</td><td>${dispensaQ}</td><td>${dispensaM}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">A partir da 3ª semana</td>
+                    <td>${dispensaS/2}</td><td>${dispensaQ/2}</td><td>${dispensaM/2}</td>
+                </tr>            
             </tbody>
         </table>` 
+    }
+    printDoseDeBpalm() {
+        // Peso minimo: 30 kg
+        let dose = 1, flq = "Mfx 400 mg", doseDeFlq = dose;
+        if(this.med === "bpall") {
+            flq = "Lfx 250 mg";
+            doseDeFlq = (this.wt < 46) ? 3 : 4;
+        }
+        let linhaDeFlq = `<tr><td class="txt-left">${flq}</td><td>${doseDeFlq}</td><td>${doseDeFlq * 7}</td><td>${doseDeFlq * 15}</td><td>${doseDeFlq * 30}</td></tr>`;
+        if(this.med === "bpal") {
+            linhaDeFlq = "<tr class='--display-none'></tr>";
+        }
+        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+                    <thead>
+                        <tr><th rowspan="2">MAT <br>(Comp.)</th><th rowspan="2">Dose diária</th><th colspan="3">Dispensa para</th></tr>
+                        <tr><th>7 dias</th><th>15 dias</th><th>30 dias</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="txt-left">Bdq&nbsp;100&nbsp;mg</td><td colspan="4">Ver no campo de notas</td></tr>
+                        <tr><td class="txt-left">Pa 200 mg</td><td>${dose}</td><td>${dose * 7}</td><td>${dose * 15}</td><td>${dose * 30}</td></tr>
+                        <tr><td class="txt-left">Lzd 600 mg</td><td>${dose}</td><td>${dose * 7}</td><td>${dose * 15}</td><td>${dose * 30}</td></tr>
+                        ${linhaDeFlq}   
+                    </tbody>
+                </table>`
     }
     converterDoseDecimalEmFracao(doseDecimal){
         return doseDecimal === 0.25 ? doseDecimal = "<sup>1</sup>/<sub>4</sub>"
         : doseDecimal === "0.25*" ? doseDecimal = "<sup>1</sup>/<sub>4</sub>*"
         : doseDecimal === 0.5 ? doseDecimal = "<sup>1</sup>/<sub>2</sub>"
         : doseDecimal === 0.75 ? doseDecimal = "<sup>3</sup>/<sub>4</sub>"
-        : doseDecimal === "2*" ? doseDecimal = "<sup>3</sup>/<sub>4</sub>"
+        : doseDecimal === "2*" ? doseDecimal = "2*"
         : doseDecimal = doseDecimal;
     }
     calcularDispensaPara(doseDiaria, numeroDeDias){
-        return Math.ceil(doseDiaria * numeroDeDias); // Em que 2 corresponde as semanas de dispensa;
+        return Math.ceil(doseDiaria * numeroDeDias);
     }
     lerNotasEprecaucoes(){
-        return '<p class="doser__section__note">Ler <b>Notas e Precauções</b>👇.</p>';
+        return '<p class="doser__section__note">Ler <b>Notas e Precauções</b> 👇.</p>';
     }
 }
 function instantiateDoser(){
@@ -391,7 +436,7 @@ function listenToDoserEvents(){
     const selectOpeners = document.querySelectorAll(".doser__select__option, .select-opener");
     selectOpeners.forEach(opener => {
         opener.addEventListener("click", () => {
-            if(opener.dataset.isnotamedicine) return false;
+            if(opener.dataset.farmaco === "notamed") return false;
             doserGeneralFunctions.openOrCloseSelect();
         });
     });
@@ -403,7 +448,7 @@ function listenToDoserEvents(){
     const medicines = document.querySelectorAll(".doser__select__option");
     medicines.forEach( medicine => {
         medicine.addEventListener("click", () => {
-            if(medicine.dataset.isnotamedicine) return false;
+            if(medicine.dataset.farmaco === "notamed") return false;
             doserGeneralFunctions.selectAnOption(medicine);
         });
     });

@@ -51,7 +51,8 @@
                             <li><button class="meatballs-menu-expanded__option meatballs-menu-expanded__option--border-radius-t" data-article="article__section--abreviaturas">Abreviaturas</button></li>
                             <li><button class="meatballs-menu-expanded__option" data-article="article__section--efeitos-adversos-1">Efeitos Adversos aos MATs da 1ª Linha</button></li>
                             <li><button class="meatballs-menu-expanded__option" data-article="article__section--efeitos-adversos-2">Efeitos Adversos aos MATs da 2ª Linha</button></li>
-                            <li><button class="meatballs-menu-expanded__option" data-article="article__section--regimes-padrao-para-tbmr">Regime padronizado para TB-MR</button></li>   
+                            <li><button class="meatballs-menu-expanded__option" data-article="article__section--regimes-padrao-para-tbmr">Regime padronizado para TB-MR</button></li>
+                            <li><button class="meatballs-menu-expanded__option" data-article="article__section--cronogramas">Cronogramas de Monitoria do TAT</button></li> 
                             <li><button class="meatballs-menu-expanded__option" data-article="article__section--regimes-tarv-recomendados">Regimes recomendados para TARV</li>
                             <li><button class="meatballs-menu-expanded__option" data-article="article__section--regimes-alternativos">Regimes alternativos se intolerância</button></li>
                             <li><button class="meatballs-menu-expanded__option" data-article="article__section--interacoes-de-dtg">Interacções medicamentosas de DTG</li>
@@ -109,7 +110,11 @@
                             <li class="doser__select__option" data-farmaco="cs-125-2a-linha">Cicloserina (Cs) 125 mg Cápsulas</li>
                             <li class="doser__select__option" data-farmaco="cs-250-2a-linha">Cicloserina (Cs) 250 mg Cápsulas</li>
                             <h4 class="doser__optgroup__title">Fase de manutenção (14 meses)</h4>
-                            <li class="doser__select__option doser__select__option--os-mesmos-da-fase-i" data-isnotamedicine="sure">Os mesmos da fase intensiva, excepto Linezolide.</li>
+                            <li class="doser__select__option doser__select__option--os-mesmos-da-fase-i" data-farmaco="notamed">Os mesmos da fase intensiva, excepto Linezolide.</li>
+                            <h3 class="doser__optgroup__title">REGIMES CURTOS PARA TB-MR e Pre-XR PARA CRIANÇAS &ge; 14 ANOS</h3>
+                            <li class="doser__select__option" data-farmaco="bpalm">BPaLM (6Bdq-Pa-Lzd-Mfx)<sup>para RR/MR</sup></li>
+                            <li class="doser__select__option" data-farmaco="bpall">BPaLL (6Bdq-Pa-Lzd-Lfx)<sup>para RR/MR</sup></li>
+                            <li class="doser__select__option" data-farmaco="bpal">BPaL (6Bdq-Pa-Lzd)<sup>para Pre-XR</sup></li>
                         </div>
                         <div class="doser__select__optgroup doser__select__optgroup--piridoxina --display-none">
                             <h3 class="doser__optgroup__title">TRATAMENTO PROFILÁTICO COM PIRIDOXINA</h3>
@@ -356,13 +361,20 @@
                     <p class="article__p article__p--margin-top article__p--highlight article__p--danger-color">Importante: Todos os pacientes devem receber Piridoxina (vitamina B6) para prevenir a toxicidade por Linezolide e Cicloserina.</p>
                     <button class="article__section__btn--close">&times;</button>
                 </section>
+                <section class="article__section article__section--fixed article__section--cronogramas">
+                    <h2 class="article__title article__title--level-1">Cronogramas de Monitoria do Tratamento Anti-Tuberculose</h2>
+                    <p class="article__p--smaller article__p-tooltip"><span class="--hide-on-mobile">Clique</span><span class="--hide-on-desktop">Toque</span> num link para exibir o respectivo cronograma. <span class="article__p-tooltip__arrow"></span></p>
+                    <p class="article__p"><a href="imagens/cronogroma-de-tat-regime-longo.png" target="_blank">Cronograma de monitoria do tratamento – Regime longo</a></p>
+                    <p class="article__p"><a href="imagens/cronogroma-de-tat-regime-bpalm.png" target="_blank">Cronograma de monitoria do tratamento – Regime Curto (BpaL/M)</a></p>
+                    <button class="article__section__btn--close">&times;</button>
+                </section>
                 <section class="article__section article__section--fixed article__section--abreviaturas">
                     <h2 class="article__title article__title--level-1">Abreviaturas</h2>
                     <table class="table-colorida table--max-width-375">
                         <thead>
                             <tr>
-                                <th>Abreviatura</th>
-                                <th>Significado</th>
+                                <th class="txt-left">Abreviatura</th>
+                                <th class="txt-left">Significado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -553,7 +565,7 @@
                 </section>
                 <section class="article__section article__section--fixed article__section--desnutricao">
                     <h2 class="article__title article__h1">Diagnóstico e Manejo da Desnutrição Aguda em crianças</h2>
-                    <table class="table-colorida table--no-margin-b txt-center table--y-center table--fs-small">
+                    <table class="table-colorida table--no-margin-b table--y-center table--fs-small">
                         <thead>
                             <tr><th colspan="3">Diagnóstico e tratamento/suplementação da desnutrição aguda em crianças &ge; 6 meses de idade <br>Lactentes &lt; 6 meses de idade com complicações médicas, e/ou dificuldades em amamentar e/ou falência de crescimento devem ser referidos ao internamento</th></tr>
                             <tr>
@@ -564,31 +576,31 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td rowspan="2" class="txt-left">P/E ou IMC para idade &lt; - 3 DP ou <b>Perímetro Braquial:</b> 
+                                <td rowspan="2">P/E ou IMC para idade &lt; - 3 DP ou <b>Perímetro Braquial:</b> 
                                     <ul class="article__list article__list--ul">
                                         <li>6 - 59 meses: &lt; 11.5 cm</li>
                                         <li>5 - 10 anos: &lt; 13 cm</li>
                                         <li>11 - 14 anos: &lt; 16 cm</li>
                                     </ul>
-                                <td rowspan="2">Desnutrição Aguda Grave (DAG)</td>
-                                <td class="txt-left"><b>DAG com complicações:</b>
+                                <td rowspan="2" class="txt-center">Desnutrição Aguda Grave (DAG)</td>
+                                <td><b>DAG com complicações:</b>
                                     <ul class="article__list article__list--ul">
                                         <li>Fase 1: Internamento F75/F100</li>
                                         <li>Fase 2 e 3: ATPU¹</li>
                                     </ul>
                                 </td>
                             </tr>
-                            <tr><td><b>DAG sem complicações:</b> <br>ATPU em ambulatório¹</td></tr>
+                            <tr><td><b>DAG sem complicações:</b> ATPU em ambulatório¹</td></tr>
                             <tr>
-                                <td rowspan="2" class="txt-left">P/E ou IMC para idade &ge; -3 e &lt; - 2 DP <b>ou Perímetro Braquial:</b> 
+                                <td rowspan="2">P/E ou IMC para idade &ge; -3 e &lt; - 2 DP <b>ou Perímetro Braquial:</b> 
                                     <ul class="article__list article__list--ul">
                                         <li>6 - 59 meses: &ge; 11.5 cm e &lt; 12.5 cm</li>
                                         <li>5 - 10 anos: &ge; 13 cm e &lt; 14.5 cm</li>
                                         <li>11 - 14 anos: &ge; 16 cm e &lt; 18.5 cm</li>
                                     </ul>
                                 </td>
-                                <td rowspan="2">Desnutrição Aguda Moderada (DAM)</td>
-                                <td class="txt-left"><b>ASPU², CSB+³ ou ATPU¹ em ambulatório conforme orientações do PRN</b> <br>Primeira escolha para suplementação: 
+                                <td rowspan="2" class="txt-center">Desnutrição Aguda Moderada (DAM)</td>
+                                <td><b>ASPU², CSB+³ ou ATPU¹ em ambulatório conforme orientações do PRN</b> <br>Primeira escolha para suplementação: 
                                     <ul class="article__list article__list--ul">
                                         <li>6 - 59 meses: ASPU/ATPU</li>
                                         <li>&ge; 5 anos: CSB+/ATPU</li>
@@ -613,7 +625,7 @@
             </article>
             <div class="dialog-box-default dialog-box-default--bibliography">
                 <h3 class="dialog-box-default__title">LEIA, É IMPORTANTE!</h3>
-                <p class="dialog-box-default__p">O TAT Pediátrico foi criado de acordo com as normas do guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" target="_blank">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data da publicação do TAT (Agosto/2024), ainda estavam em vigor no Serviço Nacional de Saúde (SNS) em Moçambique. No entanto, face as frequentes mudanças nas abordagens médicas que acompanham a evolução da Medicina, tais normas poderão ter sido actualizadas e outro instrumento de apoio, disponibilizado.</p>
+                <p class="dialog-box-default__p">O TAT Pediátrico foi desenvolvido de acordo com as normas do guião <a href="referencias/guiao-avaliacao-e-manejo-de-pacientes-com-tb-2019.pdf" target="_blank">Avaliação e manejo de pacientes com Tuberculose, Protocolos Nacionais, 2019</a> que, até a data da publicação do TAT (Agosto/2024), ainda estavam em vigor no Serviço Nacional de Saúde (SNS) em Moçambique. No entanto, face as frequentes mudanças nas abordagens médicas que acompanham a evolução da Medicina, tais normas poderão ter sido actualizadas e outro instrumento de apoio, disponibilizado.</p>
                 <div class="dialog-box-default__btn-container">
                     <button class="dialog-box-default__btn dialog-box-default__btn--entendi">Entendi</button>
                 </div>
@@ -935,9 +947,9 @@
                         <li>MOÇAMBIQUE. Ministério da Saúde. Direcção Nacional de Saúde Pública. Programa Nacional de Controlo de ITS/HIV e SIDA. Tríptico <a href="referencias/triptico-versao-2025-manejo-de-infeccao-por-hiv.pdf" target="_blank" class="footer__bibliography-sources__link">Manejo de infecção por HIV na criança e adolescente, versão 2025</a>.</li>
                     </ul>
                 </div>
-                <p class="footer__p footer__p--created-by">Criado com atenção e <span class="footer__p__heart">❤</span> por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a> | ©&nbsp;<span class="footer__current-year"></span> TAT&nbsp;Pediátrico
+                <p class="footer__p footer__p--created-by">Desenvolvido com atenção e <span class="footer__p__heart">❤</span> por <a href=https://quinamine.github.io/aderito-felix-quinamine/index.html title="Acessar biografia &raquo;">Adérito Félix Quinamine</a> | ©&nbsp;<span class="footer__current-year"></span> TAT&nbsp;Pediátrico
                 </p>
-                <p class="footer__p footer__p--available-since">Disponível desde: <time datetime="2024-08-11">11/08/2024</time>. Última actualização: Setembro&nbsp;de&nbsp;2025.</p>
+                <p class="footer__p footer__p--available-since">Disponível desde: <time datetime="2024-08-11">11/08/2024</time>. Última actualização: Outubro&nbsp;de&nbsp;2025.</p>
                 <a href="#root" class="footer__link--back-to-top">Rolar para o topo</a>
             </div>
         </footer>
