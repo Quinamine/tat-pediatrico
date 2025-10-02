@@ -270,7 +270,7 @@ class Doser {
         posologia.includes("12/12 horas") && (doseDiaria = dose * 2);
         posologia.includes("dias alternados") && (doseDiaria = dose - dose / 2);
         posologia.includes("a cada 3 dias") && (doseDiaria = dose / 3);
-        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+        return `<table class="table-grayscale table--no-margin-b">
             <tr>
                 <td colspan="3">${this.converterDoseDecimalEmFracao(dose)} ${this.getFormaFarmaceutica()} ${posologia}</td> 
             </tr>
@@ -284,7 +284,7 @@ class Doser {
         </table>`
     }
     printDoseDispersivel(dose, h20paraDil){
-        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+        return `<table class="table-grayscale table--no-margin-b">
             <thead>
                 <tr><th colspan="2">Dose e Posologia</th><th>Água para diluição</th></tr>
             </thead>
@@ -303,7 +303,7 @@ class Doser {
     printDoseDeCpEmMl(numDeCpsPorDiluir, qtdDeAgua, doseEmMl, doseEmCpCorrespondente, posologia){
         let preposicaoDoOuDa = this.med.includes("cfz") || this.med.includes("cs") ? "da" 
             : "do";
-        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+        return `<table class="table-grayscale table--no-margin-b">
             <thead>
                 <tr><th colspan="2">Diluir</th><th>Administrar</th></tr>
             </thead>
@@ -337,7 +337,7 @@ class Doser {
         let dispensaS = Math.ceil(doseParaCalcDeDisp * 7);
         let dispensaQ = Math.ceil(doseParaCalcDeDisp * 15);
         let dispensaM = Math.ceil(doseParaCalcDeDisp * 30);
-        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+        return `<table class="table-grayscale table--no-margin-b">
             <thead>
                 <tr><th colspan="2">Dose inicial*</th><th colspan="3">Após 14 dias</th></tr>
             </thead>
@@ -366,7 +366,7 @@ class Doser {
         if(this.med === "bpal") {
             linhaDeFlq = "<tr class='--display-none'></tr>";
         }
-        return `<table class="table-grayscale table--layout-fixed table--no-margin-b">
+        return `<table class="table-grayscale table--no-margin-b">
                     <thead>
                         <tr><th rowspan="2">MAT <br>(Comp.)</th><th rowspan="2">Dose diária</th><th colspan="3">Dispensa para</th></tr>
                         <tr><th>7 dias</th><th>15 dias</th><th>30 dias</th></tr>
