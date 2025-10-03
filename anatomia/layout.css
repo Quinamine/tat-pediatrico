@@ -1225,3 +1225,24 @@ mark {
     border-left: 18px solid transparent;
     z-index: 778;
 }
+.caixa-alerta {
+    max-width: 375px;
+    position: fixed;
+    top: calc(50vh - 181.5px / 2);
+    left: 0;
+    z-index: 9999999;
+    padding: 15px;
+    line-height: 1.5;
+    background: var(--black-a8);
+    color: var(--gray-e);
+    font-size: 15px;
+    text-align: center;
+}
+@media screen and (min-width: 376px) {
+    .caixa-alerta {
+        left: calc(50vw - 375px / 2)
+    }
+}
+.caixa-alerta__first-p {
+    margin-bottom: 15px;
+}
